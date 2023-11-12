@@ -4,84 +4,70 @@ import CustomBlock from "@/components/client/CustomBlock.vue";
 
 <template>
   <div class="block bg">
-    <div class="container-fuild">
-      <div class="row">
-        <div class="col-12 text-center p-4" id="student">
-          <h1 class="text-white text-center fw-bolder mb-4" data-aos="fade-up">
+    <div class="container-fuild" id="methods">
+      <div class="row" style="overlflow-y: hidden">
+        <div
+          class="col-12 text-center p-4 wrap-text"
+          style="overlflow-y: hidden"
+        >
+          <h1
+            class="text-white text-center fw-bolder mb-4"
+            style="overlflow-y: hidden"
+            data-aos="fade-up"
+          >
             {{ title }}
           </h1>
-          <p
+          <div
             class="text-white text-center fw-medium ms-auto me-auto"
             style="max-width: 600px"
             data-aos="fade-up"
           >
             <slot></slot>
-          </p>
-        </div>
-      </div>
-      <div class="row control justify-content-between">
-        <div class="col-3 text-start align-self-center">
-          <div
-            class="row h-100"
-            style="
-              background-image: linear-gradient(
-                to right,
-                rgba(12, 16, 34, 1) 20.17%,
-                transparent
-              );
-            "
-          >
-            <div class="col align-self-center">
-              <font-awesome-icon
-                :icon="['fas', 'angle-left']"
-                size="2xl"
-                class="left"
-                v-on:click="leftScoll()"
+            <p class="text-info">Что вы получите на обучении</p>
+
+            <!--            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 384 512"
+            >
+              <path
+                d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
               />
-            </div>
-          </div>
-        </div>
-        <div class="col-3 text-end">
-          <div
-            class="row h-100"
-            style="
-              background-image: linear-gradient(
-                -90deg,
-                rgba(12, 16, 34, 1) 20.17%,
-                transparent
-              );
-            "
-          >
-            <div class="col align-self-center">
-              <font-awesome-icon
-                :icon="['fas', 'angle-right']"
-                size="2xl"
-                class="right"
-                v-on:click="rightScoll()"
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 384 512"
+            >
+              <path
+                d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
               />
-            </div>
+            </svg>-->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 448 512"
+            >
+              <path
+                d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"
+              />
+            </svg>
           </div>
         </div>
       </div>
-      <div class="d-flex position-relative corusell" data-aos="fade-up">
-        <div
-          class="col-10 col-half col-md-4 p-4 d-none d-sm-none d-md-block"
-        ></div>
-        <div
-          class="col-10 col-half col-md-4 p-4"
-          v-for="once in cards"
-          :key="once.title"
-        >
-          <CustomBlock
-            @supportDataRes="onSupportData"
-            :title="once.title"
-            :text="once.text"
-          />
-        </div>
-        <div
-          class="col-10 col-half col-md-4 p-4 d-none d-sm-none d-md-block"
-        ></div>
-      </div>
+      <Carousel
+        v-bind="settings"
+        :breakpoints="breakpoints"
+        :wrap-around="true"
+      >
+        <Slide v-for="once in cards" :key="once.title">
+          <CustomBlock :title="once.title" :text="once.text" />
+        </Slide>
+
+        <template #addons>
+          <Navigation />
+        </template>
+      </Carousel>
       <div class="text-center d-block" data-aos="fade-up">
         <button
           type="button"
@@ -97,6 +83,10 @@ import CustomBlock from "@/components/client/CustomBlock.vue";
 </template>
 
 <style scoped>
+.container-fuild {
+  z-index: 3333;
+}
+
 .block {
   padding-bottom: 100px;
   background-color: rgba(12, 16, 34, 1);
@@ -106,7 +96,9 @@ import CustomBlock from "@/components/client/CustomBlock.vue";
   background-image: url("/bg_student.svg");
   background-position: top right;
   background-size: auto;
+  background-repeat: no-repeat;
 }
+
 .block::before {
   background-image: linear-gradient(
     360deg,
@@ -166,7 +158,6 @@ import CustomBlock from "@/components/client/CustomBlock.vue";
   /* padding: 100px 20px 100px 200px; */
   margin-right: 20px;
   margin-left: auto;
-  margin-right: 0;
 }
 .control .left {
   /* padding: 100px 200px 100px 20px; */
@@ -183,15 +174,113 @@ import CustomBlock from "@/components/client/CustomBlock.vue";
 .block > div > div::-webkit-scrollbar {
   display: none !important;
 }
+
+.swiper {
+  width: 100%;
+  position: relative;
+}
+
+.swiper:before {
+  content: "";
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: linear-gradient(
+    270deg,
+    #0c1022 6.96%,
+    rgba(12, 16, 34, 0) 20.37%
+  );
+
+  z-index: 3;
+}
+
+.swiper:after {
+  content: "";
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: linear-gradient(
+    270deg,
+    #0c1022 6.96%,
+    rgba(12, 16, 34, 0) 20.37%
+  );
+
+  transform: rotate(180deg);
+
+  z-index: 3;
+}
+
+.swiper-button-prev {
+  z-index: 4444;
+}
+
+.swiper-button-next {
+  z-index: 4444;
+}
+
+.swiper-slide {
+  width: calc(245px + 3rem) !important;
+}
+
+.wrap-text svg {
+  margin-top: 5px;
+
+  fill: white;
+  height: 40px;
+
+  animation: bounce 3.5s infinite;
+}
+
+.text-info {
+  margin-top: 40px;
+  font-size: 25px;
+  color: white !important;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  90% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.block > div > .row:nth-of-type(1) {
+  margin-top: 100px;
+  margin-bottom: 30px !important;
+}
+
+@media screen and (min-width: 1600px) {
+  .card p {
+    font-size: 16px !important;
+  }
+}
+
 @media screen and (min-width: 1200px) {
   .col-half {
     width: 20%;
+  }
+
+  .text {
+    font-size: 18px !important;
   }
 }
 
 @media screen and (min-width: 992px) {
   .block {
-    padding-top: 200px !important;
+    padding-top: 100px !important;
   }
   .btn-light {
     margin-top: 80px;
@@ -216,18 +305,121 @@ import CustomBlock from "@/components/client/CustomBlock.vue";
     padding-right: 15px;
   }
 }
+
+@media (max-width: 560px) {
+  .corusell {
+    transform: translateX(22px) !important;
+  }
+
+  .wrap-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  h1 {
+    position: relative;
+    max-width: 90%;
+
+    font-size: 25px !important;
+    font-weight: 700 !important;
+
+    z-index: 3;
+  }
+
+  .block {
+    margin-top: -100px;
+  }
+
+  .block:after {
+    content: "";
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background: linear-gradient(transparent 85.42%, rgba(12, 16, 34, 1) 100%);
+
+    transform: rotate(180deg);
+
+    z-index: 0;
+  }
+
+  .text-info {
+    margin-top: 40px;
+    color: white !important;
+    font-size: 24px;
+  }
+
+  .btn {
+    margin-top: 45px;
+  }
+
+  .swiper:after {
+    content: none;
+    display: none;
+
+    opacity: 0;
+  }
+
+  .swiper:before {
+    content: none;
+    display: none;
+
+    opacity: 0;
+  }
+}
 </style>
 
 <script>
+import { right } from "@popperjs/core";
+
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Navigation } from "vue3-carousel";
+
 export default {
+  name: "Breakpoints",
+  components: {
+    Carousel,
+    Slide,
+    Navigation,
+  },
   props: ["title", "cards"],
   data() {
-    return {};
+    return {
+      autoScrollType: "right",
+      settings: {
+        itemsToShow: window.innerWidth < 600 ? 1.3 : 5,
+        snapAlign: "center",
+      },
+      breakpoints: {
+        // 700px and up
+        700: {
+          itemsToShow: 1,
+          snapAlign: "center",
+        },
+        // 1024 and up
+        1024: {
+          itemsToShow: 3,
+          snapAlign: "center",
+        },
+        1200: {
+          itemsToShow: 5,
+          snapAlign: "center",
+        },
+      },
+    };
   },
-  mounted() {
-    this.rightScoll();
-  },
+  setup() {},
+  mounted() {},
   methods: {
+    onSwiper(swiper) {
+      // console.log(swiper)
+    },
+    onSlideChange() {
+      // console.log('slide change')
+    },
     leftScoll() {
       var box = document.getElementsByClassName("corusell")[0];
       box.scrollBy({
@@ -242,6 +434,32 @@ export default {
         behavior: "smooth",
       });
     },
+
+    autoCycleSlider() {
+      const leftBorder = this.$refs.leftBorder;
+      const rightBorder = this.$refs.rightBorder;
+
+      if (!leftBorder) return;
+
+      const leftBorderX = leftBorder.getBoundingClientRect().x;
+      const rightBorderX = rightBorder.getBoundingClientRect().x;
+      const windowWidth = window.innerWidth;
+
+      const offsetRightBorderX = windowWidth - rightBorderX;
+
+      if (offsetRightBorderX < 100 && this.autoScrollType === "right") {
+        this.rightScoll();
+      } else {
+        this.autoScrollType = "left";
+      }
+
+      if (leftBorderX < 0 && this.autoScrollType === "left") {
+        this.leftScoll();
+      } else {
+        this.autoScrollType = "right";
+      }
+    },
+
     onSupportData(data) {
       this.$emit("supportData", {
         title: data.title,

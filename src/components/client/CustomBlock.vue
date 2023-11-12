@@ -30,7 +30,6 @@ export default {
   background-color: rgb(12, 16, 34);
   border: 1px dashed rgb(35, 61, 163);
   color: #fff;
-  width: calc(245px + 3rem);
   height: calc(278px + 3rem);
   overflow-y: hidden;
 }
@@ -57,5 +56,17 @@ h5 {
 }
 p {
   font-size: 12px;
+}
+
+@media screen and (min-width: 1600px) {
+  .card p {
+    font-size: 13px !important;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .card p {
+    font-size: 14px !important;
+  }
 }
 </style>

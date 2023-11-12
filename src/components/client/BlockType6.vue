@@ -2,7 +2,7 @@
   <div class="block">
     <div class="container">
       <div class="row" style="margin-bottom: 50px">
-        <div class="col-12">
+        <div class="col-12 header-wrap">
           <h1 class="header text-white fw-bolder" data-aos="fade-up">
             {{ title }}
           </h1>
@@ -23,14 +23,16 @@
             <h2 class="text-white mt-0" data-aos="fade-up">
               {{ left_block.title }}
             </h2>
-            <p style="color: rgba(255, 255, 255, 0.5)" data-aos="fade-up">
+            <p
+              style="color: rgba(255, 255, 255, 0.5)"
+              data-aos="fade-up"
+              class="card-text"
+            >
               {{ left_block.text }}
             </p>
-            <img src="/Screen_MT5.png" class="screen screen-left mt-auto" />
             <img
-              src="/MT_Mobile.png"
-              class="screen-mini screen-mini-left mt-auto"
-              data-aos="fade-up"
+              src="/Screen_MT5_full.png"
+              class="screen screen-left mt-auto"
             />
           </div>
         </div>
@@ -44,14 +46,16 @@
             <h2 class="text-white" data-aos="fade-up">
               {{ right_block.title }}
             </h2>
-            <p style="color: rgba(255, 255, 255, 0.5)" data-aos="fade-up">
+            <p
+              style="color: rgba(255, 255, 255, 0.5)"
+              data-aos="fade-up"
+              class="card-text"
+            >
               {{ right_block.text }}
             </p>
-            <img src="/Screen_TV.png" class="screen screen-right mt-auto" />
             <img
-              src="/TV_Mobile.png"
-              class="screen-mini screen-mini-right mt-auto"
-              data-aos="fade-up"
+              src="/Screen_TV_full.png"
+              class="screen screen-right mt-auto"
             />
           </div>
         </div>
@@ -61,6 +65,15 @@
 </template>
 
 <style scoped>
+.container {
+  max-width: 1920px !important;
+}
+
+.screen {
+  height: 560px;
+  max-height: 560px;
+}
+
 .block {
   position: relative;
   z-index: 3 !important;
@@ -106,6 +119,20 @@
   margin-bottom: 30px;
 }
 
+@media screen and (min-width: 1668px) {
+  .block {
+    padding-bottom: 200px !important;
+  }
+
+  .card-text {
+    font-size: 20px !important;
+  }
+
+  .screen {
+    bottom: -180px !important;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .card {
     height: 800px !important;
@@ -119,12 +146,20 @@
   .card {
     height: 700px !important;
   }
-  .screen-mini {
+  /*.screen-mini {
     display: none !important;
+  }*/
+
+  .block {
+    padding-bottom: 100px;
   }
 }
 
 @media screen and (min-width: 992px) {
+  .screen {
+    height: 560px;
+    max-height: 560px;
+  }
   /* .screen-left {
             left: -35% !important;
         }
@@ -146,6 +181,59 @@
   .screen-right {
     right: -45% !important;
   }*/
+}
+
+@media (max-width: 560px) {
+  .screen-mini {
+    height: 180px !important;
+    width: 140px !important;
+
+    bottom: -74px !important;
+  }
+
+  .screen,
+  .screen-right {
+    height: 300px;
+    bottom: -20px !important;
+  }
+
+  .header {
+    width: 95%;
+    text-align: center;
+    font-size: 25px !important;
+  }
+
+  .header-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+  }
+
+  .header-mini {
+    text-align: center !important;
+  }
+
+  .screen-right {
+    bottom: -60px !important;
+  }
+
+  .screen-mini-right {
+    bottom: -105px !important;
+  }
+
+  .screen-mini {
+    height: 180px;
+  }
+}
+
+@media (max-width: 410px) {
+  .screen {
+    bottom: -60px !important;
+  }
+  .screen-right {
+    bottom: -100px !important;
+  }
 }
 
 .card h2 {
@@ -170,15 +258,15 @@
   position: absolute;
   z-index: 99;
   right: 20%;
-  bottom: -170px;
-  width: 50%;
+  bottom: -70px;
+  width: 35%;
 }
 .screen-mini-right {
   position: absolute;
   z-index: 99;
   left: 20%;
-  bottom: -170px;
-  width: 50%;
+  bottom: -55px;
+  width: 35%;
 }
 /* .screen-mini-left::before,
     .screen-mini-right::before {
