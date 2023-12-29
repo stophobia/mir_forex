@@ -9,7 +9,7 @@
                 <!-- <h3 class="mb-5 name"><span class="h3" style="border-bottom: 2px solid white;">А</span>льфа Форекс</h3> -->
                 <img
                   class="position-relative logo-img"
-                  src="/forex.svg"
+                  src="/bcs-logo-1.png"
                   style="
                     z-index: 22;
                     width: 300px;
@@ -23,7 +23,7 @@
                 class="col-12 col-md-7 d-flex align-items-center screen"
                 data-aos="fade-up"
               >
-                <img src="/mon1.png" class="" />
+                <img src="/forex-1.png" style="border-radius:10px;" />
               </div>
               <div
                 class="col-12 col-md-auto p- text position-relative text-wrap"

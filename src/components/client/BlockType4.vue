@@ -21,7 +21,7 @@
           data-aos="fade-up"
         >
           <div class="d-block">
-            <img src="/vector.png" class="w-100" />
+            <img src="/vector.png" style="border-radius:10px;" class="w-100" />
           </div>
         </div>
       </div>

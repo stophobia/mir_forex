@@ -1,4 +1,0 @@
- $db_host        = '127.0.0.1:3306';
-    $db_user        = 'root';
-    $db_pass        = 'Ne$w5P#a4s%sw^or0d';
-    $db_database    = 'mirforex';

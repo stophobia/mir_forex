@@ -57,7 +57,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
             />
           </div>
           <p class="fw-boler text-start text-danger mb-3 pb-0">
-            Вы перейдете на официальный сайт Альфа-Форекс
+            Вы перейдете на официальный сайт БКС
           </p>
         </div>
         <div class="modal-footer text-center p-5 pt-0">
