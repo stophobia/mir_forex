@@ -17,7 +17,7 @@
                         <input type="phone" :value="number" class="form-control p-3" id="number" placeholder="Номер телефона">
                         <!-- <VuePhoneNumberInput v-model="number" /> -->
                     </div>
-                    <p class="fw-boler text-start text-danger mb-3 pb-0">Вы перейдете на официальный сайт Альфа-Форекс</p>
+                    <p class="fw-boler text-start text-danger mb-3 pb-0">Вы перейдете на официальный сайт БКС-Форекс</p>
                 </div>
                 <div class="modal-footer text-center p-5 pt-0">
                     <button type="button" class="btn btn-primary w-100 mb-3">Открыть счет</button>

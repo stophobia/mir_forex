@@ -13,7 +13,7 @@
           </div>
           <div class="mb-4">
             <span class="mb-4">
-              <img src="/forex.png" class="w-70" />
+              <img src="/bcs-logo-2.png" class="w-70" />
             </span>
           </div>
           <div class="mb-4">

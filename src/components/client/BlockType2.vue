@@ -18,6 +18,7 @@
           v-on:click="changeImage()"
           data-aos="fade-up"
         >
+          <img src="/touch.svg" class="touch-icon" alt="">
           <div class="cards cards-tree">
             <div class="row">
               <div class="comment ms-auto me-auto comment-1">
@@ -83,6 +84,7 @@
           v-on:click="changeImage()"
           data-aos="fade-up"
         >
+          <img src="/touch.svg" class="touch-icon" alt="">
           <div class="cards">
             <div class="row">
               <div class="comment ms-auto me-6 comment-21 green">
@@ -320,6 +322,48 @@ h1 {
   transform: translateY(100px);
 }
 
+.touch-icon {
+  position: absolute;
+  width: 45px;
+  height: auto;
+  display: block;
+
+  opacity: 1!important;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(-50%);
+  animation: infinite pulse 1.5s ease;
+
+  z-index: 100;
+}
+
+.visible .touch-icon {
+  display: none;
+}
+
+@keyframes pulse {
+  0% {
+    width: 45px;
+  }
+  50% {
+    width: 55px;
+  }
+  100% {
+    width: 45px;
+  }
+}
+
+.bottom-tree .touch-icon {
+  top: auto;
+  left: auto;
+  right: 50%;
+  bottom: 50%;
+
+  transform: rotate(0) translateX(50%);
+}
+
 @media screen and (max-width: 992px) {
   .tree {
     width: 600px !important;
@@ -438,6 +482,16 @@ h1 {
 }
 
 @media screen and (max-width: 576px) {
+  .touch-icon {
+    left: 15%;
+    transform: translateX(0) translateY(-50%)!important;
+  }
+
+  .bottom-tree .touch-icon {
+    right: 80%;
+    transform: translateX(0) translateY(50%)!important;
+  }
+
   .logo {
     width: 300px;
     transform: none !important;

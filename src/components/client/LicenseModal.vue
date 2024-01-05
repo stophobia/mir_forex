@@ -26,7 +26,7 @@
           </svg>
         </button>
         <div class="modal-body text-start">
-          <img src="../../../public/license.jpg" alt="" />
+          <img src="../../../public/license.png" alt="" />
         </div>
       </div>
     </div>

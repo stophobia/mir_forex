@@ -8,26 +8,26 @@
               <div class="col-12">
                 <!-- <h3 class="mb-5 name"><span class="h3" style="border-bottom: 2px solid white;">А</span>льфа Форекс</h3> -->
                 <img
-                  class="position-relative logo-img"
-                  src="/bcs-logo-1.png"
-                  style="
+                    class="position-relative logo-img"
+                    src="/bcs-logo-2.png"
+                    style="
                     z-index: 22;
                     width: 300px;
                     margin-bottom: 50px;
                     margin-top: 30px;
                   "
-                  data-aos="fade-up"
+                    data-aos="fade-up"
                 />
               </div>
               <div
-                class="col-12 col-md-7 d-flex align-items-center screen"
-                data-aos="fade-up"
+                  class="col-12 col-md-7 d-flex align-items-center screen"
+                  data-aos="fade-up"
               >
-                <img src="/forex-1.png" style="border-radius:10px;" />
+                <img src="/forex-1.png"/>
               </div>
               <div
-                class="col-12 col-md-auto p- text position-relative text-wrap"
-                style="z-index: 100"
+                  class="col-12 col-md-auto p- text position-relative text-wrap"
+                  style="z-index: 100"
               >
                 <h1 class="mb-4 text-uppercase fw-bold" data-aos="fade-up">
                   <slot name="title"></slot>
@@ -37,10 +37,10 @@
                 </div>
 
                 <button
-                  type="button"
-                  class="btn-dark btn mt-5"
-                  data-bs-toggle="modal"
-                  data-bs-target="#openCountModal"
+                    type="button"
+                    class="btn-dark btn mt-5"
+                    data-bs-toggle="modal"
+                    data-bs-target="#openCountModal"
                 >
                   Открыть счет
                 </button>
@@ -69,11 +69,12 @@
   background-color: rgba(12, 16, 34, 1);
   /* background-image: linear-gradient(82.08deg, #1E2B5C 0.39%, rgba(30, 43, 92, 0) 52.77%); */
   background-image: linear-gradient(
-    135deg,
-    #293d8a -44.82%,
-    rgba(41, 61, 138, 0) 29.48%
+      135deg,
+      #293d8a -44.82%,
+      rgba(41, 61, 138, 0) 29.48%
   ) !important;
 }
+
 .block::before {
   background-image: url("/bg_support.png");
   background-position: bottom right;
@@ -87,14 +88,17 @@
   width: 100%;
   height: 100%;
 }
+
 .name,
 .name span {
   font-size: 48px;
   font-weight: 900;
 }
+
 .text {
   max-width: 550px;
 }
+
 .block > div > .row > div {
   /* background-color: #0C1022 !important; */
   /* background-image: linear-gradient(272deg, #0c1022, rgb(31, 43, 90)); */
@@ -104,11 +108,12 @@
   padding-left: 5%;
   padding-right: 5%;
 }
+
 .btn-light {
   background-image: linear-gradient(
-    162deg,
-    white 23.95%,
-    rgba(52, 91, 219, 0.3)
+      162deg,
+      white 23.95%,
+      rgba(52, 91, 219, 0.3)
   );
   padding: 20px 60px;
   font-size: 16px;
@@ -116,14 +121,27 @@
   position: relative;
   z-index: 2;
 }
-.screen img {
-  width: 100%;
+
+.screen {
+  height: fit-content;
   position: relative;
   z-index: 2;
   margin-left: -10%;
   /* border-radius: 0 10px 10px 0; */
   /* border: 15px rgb(12,16,34) solid; */
-  border-left: none !important;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  border-radius: 20px;
+  border: 2px solid #1E2B5C;
+
+  background-color: #0C1022;
+}
+
+.screen img {
+  height: auto;
+  width: 100%;
+  border-radius: 15px;
 }
 
 .btn {
@@ -133,11 +151,12 @@
   align-items: center;
   justify-content: center;
 }
+
 .btn-dark {
   background-image: linear-gradient(
-    283.54deg,
-    #878787 -39.35%,
-    rgba(86, 86, 86, 0) 85.21%
+      283.54deg,
+      #878787 -39.35%,
+      rgba(86, 86, 86, 0) 85.21%
   );
   background-color: auto;
   border: 1px solid #646464;
@@ -154,13 +173,15 @@
 }
 
 @media screen and (min-width: 992px) {
-  .screen img {
+  .screen  {
     margin-bottom: -180px;
   }
+
   .block > div > .row > div {
     padding-top: 80px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .text-wrap {
     transform: none;
@@ -170,7 +191,7 @@
     transform: none !important;
   }
 
-  .screen img {
+  .screen {
     margin-left: -7% !important;
     margin-bottom: 20px !important;
   }
@@ -187,7 +208,7 @@
     position: absolute;
     left: 0;
     background: linear-gradient(0deg, #1e2b5c 0.39%, rgba(30, 43, 92, 0) 12.77%),
-      #0c1022;
+    #0c1022;
 
     transform: rotate(180deg);
   }
@@ -211,6 +232,7 @@
 <script>
 export default {
   props: ["title"],
-  setup() {},
+  setup() {
+  },
 };
 </script>
