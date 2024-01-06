@@ -564,7 +564,7 @@ export default {
       });
 
       const url =
-          "https://alfaforex.ru/open-account/?utm_source=463afx&p=463afx";
+          "https://lk.bcs-forex.ru/NewAccount/Bcsfx?partner=18875";
 
       window.open(url);
     },
@@ -620,7 +620,7 @@ export default {
     },
     redirect() {
       const url =
-          "https://alfaforex.ru/open-account/?utm_source=463afx&p=463afx";
+          "https://lk.bcs-forex.ru/NewAccount/Bcsfx?partner=18875";
 
       window.open(url);
     },

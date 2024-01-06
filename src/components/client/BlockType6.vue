@@ -31,9 +31,10 @@
               {{ left_block.text }}
             </p>
             <img
-              src="/Screen_MT5_full.png"
+              src="/Screen-MT5.png"
               class="screen screen-left mt-auto"
             />
+            <img class="mob-left" src="/mob-1.png" alt="">
           </div>
         </div>
         <div class="col-12 col-md-6">
@@ -54,9 +55,10 @@
               {{ right_block.text }}
             </p>
             <img
-              src="/Screen_TV_full.png"
+              src="/Screen-TV.png"
               class="screen screen-right mt-auto"
             />
+            <img class="mob-right" src="/mob-2.png" alt="">
           </div>
         </div>
       </div>
@@ -117,6 +119,23 @@
   height: 800px;
   max-width: 100%;
   margin-bottom: 30px;
+}
+
+.mob-left, .mob-right {
+  position: absolute;
+  width: 319px;
+
+  z-index: 111;
+
+  bottom: -132px;
+}
+
+.mob-left {
+  right: 120px;
+}
+
+.mob-right {
+  left: 120px;
 }
 
 @media screen and (min-width: 1668px) {
@@ -224,6 +243,16 @@
 
   .screen-mini {
     height: 180px;
+  }
+
+  .mob-left, .mob-right {
+    width: 140px;
+
+    bottom: -12px;
+  }
+
+  .mob-right {
+    bottom: -45px;
   }
 }
 
