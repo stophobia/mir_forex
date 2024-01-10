@@ -213,7 +213,7 @@ setTimeout(() => {
         <div class="table__main">
           <header class="table__main--header">Среда, 10 Января 2024 г.</header>
           <div class="table__main__list">
-            <div class="table__main__list__item"  @click="toggleDropdown">
+            <div class="table__main__list__item" :class="{active: dropdown}"  @click="toggleDropdown">
               <ul class="table__main__list__item--list">
                 <li>
                   <p>00:30</p>

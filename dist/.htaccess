@@ -1,11 +1,12 @@
+<IfModule mod_negotiation.c>
+  Options -MultiViews
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-
-  # Игнорировать папки и файлы, если они существуют
+  RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-
-  # Перенаправление всех запросов к index.html
-  RewriteRule ^ index.html [QSA,L]
+  RewriteRule . /index.html [L]
 </IfModule>
