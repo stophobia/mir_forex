@@ -14,6 +14,11 @@ const router = createRouter({
       component: () => import("../views/client/HomeView.vue"),
     },
     {
+      path: "/economic-calendar",
+      name: "economic-calendar",
+      component: () => import("../views/client/EconomicCalenderView.vue"),
+    },
+    {
       path: "/privacy_policy",
       name: "Privacy Policy",
       component: () => import("../views/client/PoliticaView.vue"),

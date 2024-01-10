@@ -128,7 +128,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
               ></a>
           </li>
           <li class="nav-item p-2">
-            <a class="nav-link active fw-bolder" href="/courses"
+            <a class="nav-link active fw-bolder" href="/economic-calendar"
             ><span>Экономический календарь</span>
               <span class="dynamic-hover-link__underline"></span
               ></a>

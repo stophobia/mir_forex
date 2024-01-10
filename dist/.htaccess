@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Игнорировать папки и файлы, если они существуют
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Перенаправление всех запросов к index.html
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>
