@@ -129,7 +129,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
           </li>
           <li class="nav-item p-2">
             <a class="nav-link active fw-bolder" href="/economic-calendar"
-            ><span>Экономический календарь</span>
+            ><span class="text-mob">Экономический календарь</span>
               <span class="dynamic-hover-link__underline"></span
               ></a>
           </li>
@@ -153,7 +153,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
           ]"
         >
           <a
-              href="mailto:mir_alfa_forex@mail.ru"
+              href="mailto:mir_bcs@mail.ru"
               class="text-white text-decoration-none fw-bolder me-3"
           ><font-awesome-icon
               :icon="['fas', 'envelope']"
@@ -282,6 +282,12 @@ nav .btn {
 @media screen and (max-width: 992px) {
   .navbar-nav {
     animation: none;
+  }
+
+  .nav-item:nth-child(3) .nav-link span:first-child {
+    display:block;
+    max-width: 100px;
+    text-wrap: wrap;
   }
 
   .logo {

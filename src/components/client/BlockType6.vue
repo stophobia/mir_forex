@@ -130,6 +130,12 @@
   bottom: -132px;
 }
 
+@media (min-width: 1660px) {
+  .mob-left, .mob-right {
+    bottom: -230px;
+  }
+}
+
 .mob-left {
   right: 120px;
 }
@@ -170,7 +176,7 @@
   }*/
 
   .block {
-    padding-bottom: 100px;
+    padding-bottom: 40px;
   }
 }
 
@@ -252,7 +258,7 @@
   }
 
   .mob-right {
-    bottom: -45px;
+    bottom: -70px;
   }
 }
 

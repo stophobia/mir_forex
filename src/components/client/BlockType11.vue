@@ -56,7 +56,10 @@ import { vMaska } from "maska";
         <div class="col-12">
           <p class="text mt-3 mb-0">
             Нажимая на кнопку “Оставить заявку”, я даю согласие на обработку
-            данных и соглашаюсь с Политикой конфиденциальности
+            данных и соглашаюсь с
+            <a href="/privacy_policy" class="mt-4 link" style="color: inherit"
+            >Политика конфиденциальности</a
+            >
           </p>
         </div>
       </div>

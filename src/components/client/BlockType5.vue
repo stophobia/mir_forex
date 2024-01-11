@@ -55,11 +55,12 @@
 
 <style scoped>
 .text-wrap {
-  transform: translateY(90px);
+  transform: translateY(90px) translateX(100px);
 }
 
 .logo-img {
-  transform: translateY(-25px) !important;
+  width: 340px!important;
+  transform: translateY(-50px) !important;
 }
 
 .block {

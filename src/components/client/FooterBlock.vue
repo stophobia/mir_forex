@@ -52,6 +52,9 @@
               <a class="nav-link" href="/courses">Курсы</a>
             </li>
             <li class="nav-item" v-if="page != 'application'">
+              <a class="nav-link" href="/courses">Экономический календарь</a>
+            </li>
+            <li class="nav-item" v-if="page != 'application'">
               <a class="nav-link" href="/#review">Отзывы</a>
             </li>
             <li class="nav-item" v-if="page == 'application'">
@@ -74,7 +77,7 @@
         <div class="col-12 col-md-6 text-end">
           <a class="fw-bold" href="tel:+79878197778">+7 (987) 819-77-78</a
           ><br />
-          <a href="mailto:mir_alfa_forex@mail.ru">mir_alfa_forex@mail.ru</a>
+          <a href="mailto:mir_bcs@mail.ru">mir_bcs@mail.ru</a>
         </div>
       </div>
     </div>

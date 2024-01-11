@@ -22,11 +22,8 @@
         </ul>
       </div>
       <button class="volatility">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="28" height="28">
-          <path fill="currentColor" fill-rule="evenodd"
-                d="M16 7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h4v-3a1 1 0 0 1 1-1h4V7Zm-4 4v10h4V11h-4Zm-1 4H7v6h4v-6Zm10 6h-4V7h4v14Z"></path>
-        </svg>
-        <span>Волатильность</span>
+        <img src="/icons/settings.svg" alt="">
+        <span>Настройки</span>
       </button>
     </div>
     <span class="filter--separator"></span>
@@ -42,10 +39,6 @@
     </div>
     <span class="filter--separator"></span>
     <div class="filter__right">
-      <button class="categories">
-        <img src="/icons/list.svg" alt=""/>
-        <span>Категории</span>
-      </button>
       <button class="utc">
         <img src="/icons/clock.svg" alt=""/>
         <span>19:17 (UTC+3)</span>

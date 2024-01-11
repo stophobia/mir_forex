@@ -136,7 +136,10 @@
 }
 
 .logo {
+  position: relative;
   width: 250px;
+
+  transform: translateY(-50px)!important;
 }
 
 .container-fluid:before {
@@ -494,7 +497,7 @@ h1 {
 
   .logo {
     width: 300px;
-    transform: none !important;
+    transform: translateX(-30px)!important;
   }
 
   .comment {
