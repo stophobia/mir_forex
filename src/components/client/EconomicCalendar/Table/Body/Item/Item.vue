@@ -1,7 +1,7 @@
 <template>
   <div class="table__item">
     <header class="table__item--header">Среда, 10 Января 2024 г.</header>
-    <List/>
+    <List />
   </div>
 </template>
 
@@ -12,7 +12,7 @@
   margin-bottom: 10px;
 
   border-radius: 10px;
-  background-color: rgba(17, 17, 47, 0.6);
+  background-color: rgba(41, 61, 138, 0.4);
   color: white;
 }
 </style>

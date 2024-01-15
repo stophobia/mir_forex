@@ -9,11 +9,11 @@ import GenericModalMsg from "@/components/client/GenericModalMsg.vue";
 import Preloader from "@/components/client/Preloader.vue";
 import LicenseModal from "@/components/client/LicenseModal.vue";
 
-import {vMaska} from "maska";
-import {ref, inject} from "vue";
-import {h} from "vue";
-import {useLoading} from "vue-loading-overlay";
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import { vMaska } from "maska";
+import { ref, inject } from "vue";
+import { h } from "vue";
+import { useLoading } from "vue-loading-overlay";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Filter from "@/components/client/EconomicCalendar/Filter/Filter.vue";
 import Dropdown from "@/components/UI/Dropdown.vue";
 import Table from "@/components/client/EconomicCalendar/Table/Table.vue";
@@ -29,71 +29,56 @@ const $loading = useLoading({
 
 const fullPage = ref(false);
 const loader = $loading.show(
-    {},
-    {
-      before: h(
-          "img",
-          {
-            src: "/logo_white.png",
-            style: "width: 150px",
-            class: "d-block",
-          },
-          [],
-      ),
-      after: h(
-          "div",
-          {
-            class: "preloader-line",
-          },
-          [],
-      ),
-    },
+  {},
+  {
+    before: h(
+      "img",
+      {
+        src: "/logo_white.png",
+        style: "width: 150px",
+        class: "d-block",
+      },
+      [],
+    ),
+    after: h(
+      "div",
+      {
+        class: "preloader-line",
+      },
+      [],
+    ),
+  },
 );
 
 setTimeout(() => {
   loader.hide();
 }, 4000);
-
-// $(function(){
-//     $('a[href*=#]').click(function() {
-//     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-//         && location.hostname == this.hostname) {
-//             var $target = $(this.hash);
-//             $target = $target.length && $target || $('[name=' + this.hash.slice(1) +']');
-//             if ($target.length) {
-//                 var targetOffset = $target.offset().top;
-//                 $('html,body').animate({scrollTop: targetOffset}, 500);//скорость прокрутки
-//                 return false;
-//             }
-//         }
-//     });
-// });
 </script>
 
 <template>
   <div
-      class="modal fade"
-      id="sendApplication"
-      tabindex="-1"
-      aria-labelledby="sendApplication"
-      aria-hidden="true"
-      ref="modal"
+    class="modal fade"
+    id="sendApplication"
+    tabindex="-1"
+    aria-labelledby="sendApplication"
+    aria-hidden="true"
+    ref="modal"
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <button
-            type="button"
-            class="btn-close modal-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
+          type="button"
+          class="btn-close modal-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
         >
           <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 384 512"
+            xmlns="http://www.w3.org/2000/svg"
+            height="1em"
+            viewBox="0 0 384 512"
           >
             <path
-                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
             />
           </svg>
         </button>
@@ -101,36 +86,36 @@ setTimeout(() => {
           <h1 class="mb-3">Оставить заявку</h1>
           <div class="mb-4">
             <input
-                type="text"
-                class="form-control p-3"
-                id="call_name"
-                placeholder="Ваше имя и фамилия"
-                required
-                ref="inputName"
+              type="text"
+              class="form-control p-3"
+              id="call_name"
+              placeholder="Ваше имя и фамилия"
+              required
+              ref="inputName"
             />
           </div>
           <div class="mb-3">
             <input
-                type="phone"
-                :value="number"
-                v-maska
-                data-maska="8 (###) ###-##-##"
-                class="form-control p-3"
-                id="call_number"
-                placeholder="Номер телефона"
-                required
-                ref="inputPhone"
+              type="phone"
+              :value="number"
+              v-maska
+              data-maska="8 (###) ###-##-##"
+              class="form-control p-3"
+              id="call_number"
+              placeholder="Номер телефона"
+              required
+              ref="inputPhone"
             />
           </div>
         </div>
         <div
-            class="modal-footer text-center p-5 pt-0 border-0 flex flex-column align-center"
+          class="modal-footer text-center p-5 pt-0 border-0 flex flex-column align-center"
         >
           <button
-              type="button"
-              class="btn btn-primary p-3 m-0 mt-4 w-100 mb-3"
-              v-on:click="call()"
-              :disabled="isButtonDisabled"
+            type="button"
+            class="btn btn-primary p-3 m-0 mt-4 w-100 mb-3"
+            v-on:click="call()"
+            :disabled="isButtonDisabled"
           >
             Заказать звонок
           </button>
@@ -147,28 +132,67 @@ setTimeout(() => {
     </div>
   </div>
 
-  <GenericModalMsg :type="GenericMsgType"/>
+  <GenericModalMsg :type="GenericMsgType" />
 
-  <ReviewModalMsg :type="ReviewlMsgType"/>
-  <ReviewModalCreate @onReviewResult="onReviewResult"/>
+  <ReviewModalMsg :type="ReviewlMsgType" />
+  <ReviewModalCreate @onReviewResult="onReviewResult" />
   <ReviewModal
-      :name="reviewData.name"
-      :date="reviewData.date"
-      :text="reviewData.text"
+    :name="reviewData.name"
+    :date="reviewData.date"
+    :text="reviewData.text"
   />
-  <SupportModal :title="supportData.title" :text="supportData.text"/>
-  <LicenseModal/>
+  <SupportModal :title="supportData.title" :text="supportData.text" />
+  <LicenseModal />
 
-  <Preloader/>
-  <TopHeader/>
+  <Preloader />
+  <TopHeader />
   <main class="main">
     <section class="content">
       <h1 class="content__title">Экономический календарь</h1>
-      <Filter/>
-      <Table/>
+      <Filter />
+      <Table />
+    </section>
+    <section class="info">
+      <h1 class="content__title">
+        Экономические новости Форекс в реальном времени
+      </h1>
+      <br />
+      <p class="info__top">
+        В экономическом календаре трейдер найдёт информацию о значимых событиях
+        не только на неделю вперёд, но и на период, который выберет он сам.
+        Валютный рынок гибок и меняется изо дня в день, причём изменения могут
+        быть настолько кардинальными и неожиданными, что форекс может очень
+        быстро оставить «не у дел» трейдеров, потерявших интерес к статистике
+        или новостям. Календарь подскажет, оправдался ли прогноз, и на своей
+        странице наглядно продемонстрирует ценные статистические отчёты,
+        экономические индикаторы (список можно изменять самостоятельно), а также
+        главные события банковской сферы.
+        <br />
+        <br />
+        Календарь от Международный институт рынка — это ваше подспорье в
+        планировании торговой стратегии.
+      </p>
+      <br />
+      <p class="info__hidden">
+        Международный институт рынка публикует экономический календарь
+        исключительно для информационных целей. Демонстрация на сайте
+        экономического календаря не является деятельностью по консультированию.
+        Информация, полученная из экономического календаря, не может быть
+        использована для принятия торговых решений. Упоминаемые в экономическом
+        календаре финансовые инструменты и активы могут не входить в список
+        инструментов, доступных для торговли. Международный институт рынка не
+        дает гарантий и заверений и не принимает какой-либо ответственности в
+        отношении финансовых результатов, которые могут быть получены при
+        использовании экономического календаря. Принимая решение о проведении
+        операций на финансовом рынке, необходимо учитывать, что инвестирование в
+        финансовые инструменты несёт в себе риск неполучения ожидаемого дохода,
+        потери части или всех инвестированных средств, расходы и возможные
+        дополнительные потери. Информация предоставлена:
+        <a href="{{linkPage}}">{{ linkPage }}</a>
+      </p>
     </section>
   </main>
-  <FooterBlock/>
+  <FooterBlock />
 </template>
 
 <style scoped>
@@ -187,7 +211,6 @@ ul {
 a {
   color: inherit;
   background: 0;
-
 }
 
 p {
@@ -214,7 +237,6 @@ button {
 }
 
 .content__title {
-
 }
 
 .table__main__list__item__description p {
@@ -227,21 +249,19 @@ button {
   padding-right: 5% !important;
 
   color: white;
-  background-image: linear-gradient(rgba(12, 16, 32, 1) 16%, rgba(27, 39, 82, 1));
+  background-image: linear-gradient(
+    rgba(12, 16, 32, 1) 16%,
+    rgba(27, 39, 82, 1)
+  );
 }
 
-.text {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 14px !important;
+.info {
+  padding: 50px 0;
 }
 
-.text-muted {
-  color: rgba(255, 255, 255, 0.5) !important;
-  font-size: 18px;
-}
-
-.intro-wrap {
-  margin-bottom: -65px;
+.info .info__hidden {
+  font-size: 12px;
+  color: rgba(105, 104, 104, 0.88);
 }
 
 @media (min-width: 1400px) {
@@ -259,9 +279,9 @@ button {
 
 .btn-light {
   background-image: linear-gradient(
-      162deg,
-      white 23.95%,
-      rgba(52, 91, 219, 0.3)
+    162deg,
+    white 23.95%,
+    rgba(52, 91, 219, 0.3)
   );
   margin-bottom: 50px;
   padding: 15px 50px;
@@ -271,9 +291,9 @@ button {
 
 .btn-dark {
   background-image: linear-gradient(
-      283.54deg,
-      #878787 -39.35%,
-      rgba(86, 86, 86, 0) 85.21%
+    283.54deg,
+    #878787 -39.35%,
+    rgba(86, 86, 86, 0) 85.21%
   );
   background-color: transparent;
   margin-top: 50px;
@@ -496,8 +516,8 @@ article {
 </style>
 
 <script>
-import {defineComponent} from "vue";
-import {Carousel, Navigation, Slide} from "vue3-carousel";
+import { defineComponent } from "vue";
+import { Carousel, Navigation, Slide } from "vue3-carousel";
 
 import "vue3-carousel/dist/carousel.css";
 
@@ -527,12 +547,13 @@ export default {
       timeLeft: 0,
       dropdown: false,
       contentHeight: 0,
+      linkPage: location.href,
     };
   },
   mounted() {
     document
-        .querySelector("#call_number")
-        .addEventListener("input", (e) => console.log(e));
+      .querySelector("#call_number")
+      .addEventListener("input", (e) => console.log(e));
 
     this.$nextTick(() => {
       const hash = window.location.hash;
@@ -557,7 +578,7 @@ export default {
     if (lastClickTime) {
       const currentTime = new Date().getTime();
       const hoursPassed = Math.floor(
-          (currentTime - Number(lastClickTime)) / 3600000,
+        (currentTime - Number(lastClickTime)) / 3600000,
       );
 
       if (hoursPassed < 12) {
@@ -565,8 +586,7 @@ export default {
       }
     }
   },
-  created() {
-  },
+  created() {},
   methods: {
     close() {
       const btnClose = this.$refs.closeModal;
@@ -577,7 +597,7 @@ export default {
       modal.removeAttribute("aria-modal");
       modal.setAttribute("aria-hidden", true);
       [...document.querySelectorAll(".modal-backdrop.show")].forEach(
-          (item) => (item.style.display = "none"),
+        (item) => (item.style.display = "none"),
       );
 
       document.body.style.overflow = "auto";
@@ -677,7 +697,7 @@ export default {
     },
     calculateContentHeight() {
       this.$nextTick(() => {
-        const content = document.querySelector('.dropdown-content');
+        const content = document.querySelector(".dropdown-content");
 
         this.contentHeight = this.dropdown ? content.scrollHeight : 0;
       });

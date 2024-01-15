@@ -38,6 +38,10 @@
         range
         multi-calendars
         dark
+        locale="ru"
+        :format="format"
+        cancelText="Отмена"
+        selectText="Выбрать"
         :enable-time-picker="false"
         placeholder="Выберите период"
         input-class-name="dp-custom-input"
@@ -134,6 +138,10 @@ button {
   background-color: rgba(41, 61, 138, 0.4);
   color: white;
   border: none;
+}
+
+.dp__calendar_next {
+  margin-left: 20px;
 }
 
 .filter {
@@ -273,6 +281,22 @@ import "@vuepic/vue-datepicker/dist/main.css";
 import { ref, onMounted } from "vue";
 
 const date = ref();
+
+const format = (date) => {
+  console.log("date", date);
+  const startDate = {
+    day: date[0].getDate(),
+    month: date[0].getMonth() + 1,
+    year: date[0].getFullYear(),
+  };
+  const endDate = {
+    day: date[1].getDate(),
+    month: date[1].getMonth() + 1,
+    year: date[1].getFullYear(),
+  };
+
+  return `${startDate.day}.${startDate.month}.${startDate.year} - ${endDate.day}.${endDate.month}.${endDate.year}`;
+};
 </script>
 
 <script>
@@ -296,5 +320,6 @@ export default {
       return this.tabs.slice(-3);
     },
   },
+  mounted() {},
 };
 </script>
