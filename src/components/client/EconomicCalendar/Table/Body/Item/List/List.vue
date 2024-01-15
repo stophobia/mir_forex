@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  padding: 0;
 
   background: none;
 }

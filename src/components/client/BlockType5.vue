@@ -60,7 +60,7 @@
 
 .logo-img {
   width: 340px!important;
-  transform: translateY(-50px) !important;
+  transform: translateY(-50px) translateX(-50px) !important;
 }
 
 .block {
@@ -142,7 +142,8 @@
 .screen img {
   height: auto;
   width: 100%;
-  border-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .btn {

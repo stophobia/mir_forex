@@ -269,6 +269,10 @@
   .screen-right {
     bottom: -100px !important;
   }
+
+  .mob-left {
+    bottom: -52.5px;
+  }
 }
 
 .card h2 {

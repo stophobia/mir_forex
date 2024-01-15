@@ -1,28 +1,29 @@
 <template>
+  <Country :tabs="tabs" @updateTabs="updateTabs" />
   <div class="filter">
     <div class="filter__left">
       <div class="not-flag">
-        <font-awesome-icon
-        :icon="['fat', 'globe']"/>
+        <font-awesome-icon :icon="['fat', 'globe']" />
       </div>
-      <div class="selected-flags">
+      <div
+        class="selected-flags"
+        data-bs-toggle="modal"
+        data-bs-target="#country"
+      >
         <ul class="filter-select-flags">
-          <li>
-            <span class="flag"></span>
+          <li v-for="tab in lastThreeTabs" :key="tab.code">
+            <img class="flag" :src="`/public/country/${tab.code}.svg`" alt="" />
           </li>
-          <li>
-            <span class="flag"></span>
+          <li v-if="tabs.length > 0">
+            <span class="count">+{{ tabs.length }}</span>
           </li>
-          <li>
-            <span class="flag"></span>
-          </li>
-          <li>
-            <span class="count">+12</span>
+          <li v-if="tabs.length === 0">
+            <img class="flag" src="/icons/globe.svg" alt="" />
           </li>
         </ul>
       </div>
       <button class="volatility">
-        <img src="/icons/settings.svg" alt="">
+        <img src="/icons/settings.svg" alt="" />
         <span>Настройки</span>
       </button>
     </div>
@@ -32,15 +33,22 @@
       <button class="filter__middle--day">Сегодня</button>
       <button class="filter__middle--day">Завтра</button>
       <button class="filter__middle--day">Эта неделя</button>
-      <button class="filter__middle--day">
-        <img src="/icons/calendar.svg" alt=""/>
-        <span>Выберите период</span>
-      </button>
+      <VueDatePicker
+        v-model="date"
+        range
+        multi-calendars
+        dark
+        :enable-time-picker="false"
+        placeholder="Выберите период"
+        input-class-name="dp-custom-input"
+        menu-class-name="dp-custom-menu"
+        calendar-class-name="dp-custom-calendar"
+      />
     </div>
     <span class="filter--separator"></span>
     <div class="filter__right">
       <button class="utc">
-        <img src="/icons/clock.svg" alt=""/>
+        <img src="/icons/clock.svg" alt="" />
         <span>19:17 (UTC+3)</span>
       </button>
     </div>
@@ -60,6 +68,72 @@ button {
   border: none;
   color: white;
   cursor: pointer;
+}
+
+.dp__main {
+  width: fit-content;
+}
+
+.dp-custom-input {
+  background: none;
+  border: none;
+  width: fit-content;
+
+  font-weight: 500;
+  color: #ffffffac;
+  font-family: inherit;
+  border-radius: 7px;
+
+  transition: all 0.3s ease;
+}
+
+.dp-custom-input:hover {
+  background-color: rgba(41, 61, 138, 0.4);
+}
+
+.dp-custom-input::placeholder {
+  font-weight: 500;
+  color: #ffffffac;
+  font-family: inherit;
+}
+
+.dp__input_icon {
+  fill: #1e3050;
+}
+
+/*.dp__pointer.dp-custom-input {
+  background-color: rgba(41, 61, 138, 0.4);
+}*/
+
+.dp__menu {
+  background-color: rgba(17, 17, 47, 0.96);
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
+
+.dp__calendar_item {
+  color: white;
+}
+
+.dp__calendar_header_separator {
+  background-color: #293d8a;
+}
+
+.dp__calendar_header_item {
+  color: white;
+}
+
+.dp__month_year_select:hover {
+  background-color: rgba(41, 61, 138, 0.4);
+  color: white;
+}
+
+.dp__action_select,
+.dp__range_between {
+  background-color: rgba(41, 61, 138, 0.4);
+  color: white;
+  border: none;
 }
 
 .filter {
@@ -88,6 +162,8 @@ button {
 .selected-flags {
   display: flex;
   align-items: center;
+
+  cursor: pointer;
 }
 
 .filter__left {
@@ -104,7 +180,7 @@ button {
 
   border-radius: 10px;
 
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .filter-select-flags {
@@ -126,7 +202,6 @@ button {
   height: 24px;
 
   border-radius: 50%;
-  background-color: rgba(121, 119, 119, 0.6);
 }
 
 .filter-select-flags .count {
@@ -158,7 +233,7 @@ button {
   background: none;
   cursor: pointer;
 
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .filter__middle--day:hover,
@@ -169,7 +244,7 @@ button {
 .filter__left .volatility.active,
 .filter__right .utc:hover,
 .filter__right .utc.active {
-  background-color: rgba(240, 243, 250, 0.6);
+  background-color: rgba(41, 61, 138, 0.4);
 }
 
 .filter__right {
@@ -187,6 +262,39 @@ button {
 
   border-radius: 10px;
 
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 </style>
+<script setup>
+import Country from "@/components/client/EconomicCalendar/Modals/Country.vue";
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+
+import { ref, onMounted } from "vue";
+
+const date = ref();
+</script>
+
+<script>
+import CountryFlag from "vue-country-flag-next";
+export default {
+  components: {
+    CountryFlag,
+  },
+  data() {
+    return {
+      tabs: [],
+    };
+  },
+  methods: {
+    updateTabs(newTabs) {
+      this.tabs = newTabs;
+    },
+  },
+  computed: {
+    lastThreeTabs() {
+      return this.tabs.slice(-3);
+    },
+  },
+};
+</script>

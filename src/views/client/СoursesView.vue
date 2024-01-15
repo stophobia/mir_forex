@@ -6,11 +6,9 @@ import FooterBlock from "@/components/client/FooterBlock.vue";
 import { ref, inject } from "vue";
 import { useLoading } from "vue-loading-overlay";
 import { h } from "vue";
-import { createWebHistory } from "vue-router";
 import { vMaska } from "maska";
 import LicenseModal from "@/components/client/LicenseModal.vue";
-import SupportModal from "@/components/client/SupportModal.vue";
-import CoursesModal from "@/components/client/COursesModal.vue";
+import CoursesModal from "@/components/client/CoursesModal.vue";
 
 const $loading = useLoading({
   "background-color": "#0d1118",

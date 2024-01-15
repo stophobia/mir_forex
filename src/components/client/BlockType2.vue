@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 block text-center">
-        <div class="text-white text-center header">
+        <div class="text-white text-center header header--title">
           <img
             src="/full_logo_white.png"
             class="mb-4 logo"
@@ -138,8 +138,6 @@
 .logo {
   position: relative;
   width: 250px;
-
-  transform: translateY(-50px)!important;
 }
 
 .container-fluid:before {
@@ -367,6 +365,15 @@ h1 {
   transform: rotate(0) translateX(50%);
 }
 
+@media (min-width: 1200px) {
+  .header--title {
+    position: relative;
+    transform: translateY(-60px);
+
+    z-index: 111;
+  }
+}
+
 @media screen and (max-width: 992px) {
   .tree {
     width: 600px !important;
@@ -485,6 +492,10 @@ h1 {
 }
 
 @media screen and (max-width: 576px) {
+  .container-fluid {
+    padding-top: 50px;
+  }
+
   .touch-icon {
     left: 15%;
     transform: translateX(0) translateY(-50%)!important;
@@ -495,9 +506,16 @@ h1 {
     transform: translateX(0) translateY(50%)!important;
   }
 
+  .header--title {
+    position: relative;
+
+    transform: translateY(-25px);
+    z-index: 111;
+  }
+
   .logo {
-    width: 300px;
-    transform: translateX(-30px)!important;
+    width: 220px;
+    margin-bottom: 10px!important;
   }
 
   .comment {
@@ -541,6 +559,13 @@ h1 {
     top: 40px;
   }
 }
+
+@media (max-width: 425px) {
+  .button-top, .button-bottom {
+    max-width: 110px;
+  }
+}
+
 .tree > .cards {
   opacity: 0;
   transition: 0.5s;

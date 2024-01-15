@@ -13,7 +13,7 @@
           </div>
           <div class="mb-4">
             <span class="mb-4">
-              <img src="/bcs-logo-2.png" class="w-70" />
+              <img src="/bcs-logo-2.png" class="w-100 bcs-logo" />
             </span>
           </div>
           <div class="mb-4">
@@ -34,7 +34,7 @@
             >
               ООО «БКС». Услуги на рынке форекс оказывает ООО
               «БКС» который имеет лицензию профессионального участника
-              рынка ценных бумаг № 045-14070-020000 от 20.12.2018 на
+              рынка ценных бумаг № 045-14117-020000 от 18.11.2021 на
               осуществление деятельности форекс-дилера, выданную Банком России. </span
             ><br />
             Предлагаемые к заключению договоры или финансовые инструменты
@@ -52,7 +52,7 @@
               <a class="nav-link" href="/courses">Курсы</a>
             </li>
             <li class="nav-item" v-if="page != 'application'">
-              <a class="nav-link" href="/courses">Экономический календарь</a>
+              <a class="nav-link" href="/courses">Экономический<br>календарь</a>
             </li>
             <li class="nav-item" v-if="page != 'application'">
               <a class="nav-link" href="/#review">Отзывы</a>
@@ -72,7 +72,7 @@
       <hr class="mb-0 mt-0" />
       <div class="row bottom">
         <div class="col-12 col-md-6">
-          <p>Copyright © 2018-2023 Все права защищены</p>
+          <p>Copyright © 2018-2024 Все права защищены</p>
         </div>
         <div class="col-12 col-md-6 text-end">
           <a class="fw-bold" href="tel:+79878197778">+7 (987) 819-77-78</a
@@ -93,6 +93,7 @@ img {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: underline !important;
 }
+
 @media screen and (max-width: 992px) {
   .footer > div > .top > div.col-12.col-md-3.text-end {
     /* display: none !important; */
@@ -154,6 +155,12 @@ a {
 }
 .openCount:hover {
   border: 3px solid white;
+}
+
+.bcs-logo {
+  position: relative;
+
+  transform: translateX(-20px);
 }
 </style>
 

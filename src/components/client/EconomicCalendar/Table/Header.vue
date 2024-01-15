@@ -7,43 +7,25 @@
       </p>
     </li>
     <li>
-      <p>
-        Оставшееся время
-      </p>
+      <p>Оставшееся время</p>
     </li>
     <li>
-      <p>
-        Валюта
-      </p>
+      <p>Валюта</p>
     </li>
     <li>
-      <p>
-        Волатильность
-      </p>
+      <p>Волатильность</p>
     </li>
     <li>
-      <p>
-        Событие
-      </p>
+      <p>Событие</p>
     </li>
     <li>
-      <p>
-        Фактическое значение
-      </p>
+      <p>Фактическое значение</p>
     </li>
     <li>
-      <p>
-        Прогноз
-      </p>
+      <p>Прогноз</p>
     </li>
     <li>
-      <p>
-        Предыдущее значение
-      </p>
-    </li>
-    <li>
-      <p>
-      </p>
+      <p>Предыдущее значение</p>
     </li>
   </ul>
 </template>
@@ -52,14 +34,20 @@
 .table__header {
   display: grid;
   width: 100%;
-  grid-template-columns: .05fr .1fr .1fr .1fr .3fr .1fr .1fr .1fr .1fr .1fr;
+  grid-template-columns: 0.05fr 0.2fr 0.1fr 0.1fr 0.3fr 0.1fr 0.1fr 0.1fr 0.1fr;
   gap: 10px;
   align-items: center;
   margin-bottom: 10px;
+  text-align: center;
+}
+
+.table__header li:nth-child(5) p {
+  text-align: start;
 }
 
 p {
   background: none;
   color: white;
+  padding: 0;
 }
 </style>

@@ -17,6 +17,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import Filter from "@/components/client/EconomicCalendar/Filter/Filter.vue";
 import Dropdown from "@/components/UI/Dropdown.vue";
 import Table from "@/components/client/EconomicCalendar/Table/Table.vue";
+import Country from "@/components/client/EconomicCalendar/Modals/Country.vue";
 
 const $loading = useLoading({
   "background-color": "#0d1118",

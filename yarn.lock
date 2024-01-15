@@ -7,6 +7,13 @@
   resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.22.7.tgz"
   integrity sha512-7NF8pOkHP5o2vpmGgNGcfAeCvOYhGLyA3Z4eBQkT1RJlWu47n63bCs93QfJ2hIAFCil7L5P2IWhs1oToVgrL0Q==
 
+"@babel/runtime@^7.21.0":
+  version "7.23.8"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.8.tgz#8ee6fe1ac47add7122902f257b8ddf55c898f650"
+  integrity sha512-Y7KbAP984rn1VGMbGqKmBLio9V7y5Je9GvU4rQPCPinCyNfUcToxIXl06d59URp/F3LwinvODxab5N/G6qggkw==
+  dependencies:
+    regenerator-runtime "^0.14.0"
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.npmjs.org/@colors/colors/-/colors-1.5.0.tgz"
@@ -447,6 +454,14 @@
     js-beautify "1.14.9"
     vue-component-type-helpers "1.8.4"
 
+"@vuepic/vue-datepicker@^7.4.1":
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/@vuepic/vue-datepicker/-/vue-datepicker-7.4.1.tgz#910c62822cba88bb85d141a42338316ac16ffbab"
+  integrity sha512-sFdBMdFnvf6GMD5Ghaw6IQUbLqlVU1XYzMVJmjD34DggP5k/7866gDyH4CB+4oD6/FpYFL8y3z5sYgY0S8zHig==
+  dependencies:
+    date-fns "^2.30.0"
+    date-fns-tz "^1.3.7"
+
 abab@^2.0.6:
   version "2.0.6"
   resolved "https://registry.npmjs.org/abab/-/abab-2.0.6.tgz"
@@ -879,6 +894,18 @@ data-urls@^4.0.0:
     abab "^2.0.6"
     whatwg-mimetype "^3.0.0"
     whatwg-url "^12.0.0"
+
+date-fns-tz@^1.3.7:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.3.8.tgz#083e3a4e1f19b7857fa0c18deea6c2bc46ded7b9"
+  integrity sha512-qwNXUFtMHTTU6CFSFjoJ80W8Fzzp24LntbjFFBgL/faqds4e5mo9mftoRLgr3Vi1trISsg4awSpYVsOQCRnapQ==
+
+date-fns@^2.30.0:
+  version "2.30.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.30.0.tgz#f367e644839ff57894ec6ac480de40cae4b0f4d0"
+  integrity sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
 
 dayjs@^1.10.4:
   version "1.11.9"
@@ -1808,10 +1835,10 @@ postcss@^8.1.10, postcss@^8.4.14, postcss@^8.4.26:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-prettier@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-3.0.3.tgz"
-  integrity sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==
+prettier@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.2.2.tgz#96e580f7ca9c96090ad054616c0c4597e2844b65"
+  integrity sha512-HTByuKZzw7utPiDO523Tt2pLtEyK7OibUD9suEJQrPUCYQqrHr74GGX6VidMrovbf/I50mPqr8j/II6oBAuc5A==
 
 pretty-bytes@^5.6.0:
   version "5.6.0"
@@ -1878,6 +1905,11 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+regenerator-runtime@^0.14.0:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz#356ade10263f685dda125100cd862c1db895327f"
+  integrity sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==
 
 request-progress@^3.0.0:
   version "3.0.0"
@@ -2325,7 +2357,7 @@ vue-component-type-helpers@1.8.4:
 
 vue-country-flag-next@^2.3.2:
   version "2.3.2"
-  resolved "https://registry.npmjs.org/vue-country-flag-next/-/vue-country-flag-next-2.3.2.tgz"
+  resolved "https://registry.yarnpkg.com/vue-country-flag-next/-/vue-country-flag-next-2.3.2.tgz#c35d283f83b7631be414c720391a8363991557c2"
   integrity sha512-Lv12L1VTwlBgizpZ3xPEPO3zuIETaJmeSiPuLOWLLgu2EakwU/o72iKYiKcdZ6BXiSkfss+Ski5fDzjuxZ1DcA==
 
 vue-loading-overlay@^6.0.3:
