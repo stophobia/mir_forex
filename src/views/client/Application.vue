@@ -6,8 +6,7 @@ import { ref, inject } from "vue";
 import { useLoading } from "vue-loading-overlay";
 import { h } from "vue";
 import LicenseModal from "@/components/client/LicenseModal.vue";
-import ReviewModalMsg from "@/components/client/reviewModalMsg.vue";
-import GenericModalMsg from "@/components/client/GenericModalMsg.vue";
+import ReviewModalMsg from "@/components/client/ReviewModalMsg.vue";
 
 const $loading = useLoading({
   "background-color": "#0d1118",
