@@ -1,47 +1,60 @@
 import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "@/views/client/HomeView.vue";
+import EconomicCalenderView from "@/views/client/EconomicCalenderView.vue";
+import PoliticaView from "@/views/client/PoliticaView.vue";
+import LoginView from "@/views/client/LoginView.vue";
+import CoursesView from "@/views/client/СoursesView.vue";
+import AboutView from "@/views/client/AboutView.vue";
+import Application from "@/views/client/Application.vue";
+import Settings from "@/views/admin/Settings.vue";
+import RequestListView from "@/views/admin/RequestListView.vue";
+import RequestView from "@/views/admin/RequestView.vue";
+import CommentsListView from "@/views/admin/CommentsListView.vue";
+import CommentsView from "@/views/admin/CommentsView.vue";
+import { computed, ref } from "vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: "/",
       name: "home",
-      component: () => import("../views/client/HomeView.vue"),
+      component: HomeView,
     },
     {
       path: "/home",
       name: "home2",
-      component: () => import("../views/client/HomeView.vue"),
+      component: HomeView,
     },
     {
       path: "/economic-calendar",
       name: "economic-calendar",
-      component: () => import("../views/client/EconomicCalenderView.vue"),
+      component: EconomicCalenderView,
     },
     {
       path: "/privacy_policy",
       name: "Privacy Policy",
-      component: () => import("../views/client/PoliticaView.vue"),
+      component: PoliticaView,
     },
     {
       path: "/login",
       name: "login",
-      component: () => import("../views/client/LoginView.vue"),
+      component: LoginView,
     },
     {
       path: "/courses",
       name: "Сourses",
-      component: () => import("../views/client/СoursesView.vue"),
+      component: CoursesView,
     },
     {
       path: "/about",
       name: "About",
-      component: () => import("../views/client/AboutView.vue"),
+      component: AboutView,
     },
     {
       path: "/application",
       name: "Application",
-      component: () => import("../views/client/Application.vue"),
+      component: Application,
     },
 
     {
@@ -55,27 +68,27 @@ const router = createRouter({
     {
       path: "/admin/settings",
       name: "Settings",
-      component: () => import("../views/admin/Settings.vue"),
+      component: Settings,
     },
     {
       path: "/admin/request",
       name: "RequestList",
-      component: () => import("../views/admin/RequestListView.vue"),
+      component: RequestListView,
     },
     {
       path: "/admin/request/:number",
       name: "Request",
-      component: () => import("../views/admin/RequestView.vue"),
+      component: RequestView,
     },
     {
       path: "/admin/feedback",
       name: "CommentsList",
-      component: () => import("../views/admin/CommentsListView.vue"),
+      component: CommentsListView,
     },
     {
       path: "/admin/feedback/:number",
       name: "Comment",
-      component: () => import("../views/admin/CommentsView.vue"),
+      component: CommentsView,
     },
   ],
 });

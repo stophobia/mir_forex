@@ -7,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+mir-forex
+dist
 node_modules
 .vscode
 .DS_Store
@@ -14,8 +16,7 @@ dist-ssr
 coverage
 *.local
 
-mir-forex
-dist
+
 /cypress/videos/
 /cypress/screenshots/
 
