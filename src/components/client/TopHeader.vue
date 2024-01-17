@@ -122,13 +122,16 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
             </a>
           </li>
           <li class="nav-item p-2">
-            <router-link to="/about" class="nav-link active fw-bolder">
+            <router-link to="/courses" class="nav-link active fw-bolder">
               <span>Курсы</span>
               <span class="dynamic-hover-link__underline"></span>
             </router-link>
           </li>
           <li class="nav-item p-2">
-            <router-link to="/about" class="nav-link active fw-bolder">
+            <router-link
+              to="/economic-calendar"
+              class="nav-link active fw-bolder"
+            >
               <span class="text-mob">Экономический календарь</span>
               <span class="dynamic-hover-link__underline"></span>
             </router-link>
