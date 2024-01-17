@@ -1,32 +1,32 @@
 <script setup>
-import {vMaska} from "maska";
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import { vMaska } from "maska";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 </script>
 
 <template>
   <div
-      class="modal fade"
-      id="openCountModal"
-      tabindex="-1"
-      aria-labelledby="openCountModal"
-      aria-hidden="true"
-      ref="modal"
+    class="modal fade"
+    id="openCountModal"
+    tabindex="-1"
+    aria-labelledby="openCountModal"
+    aria-hidden="true"
+    ref="modal"
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <button
-            type="button"
-            class="btn-close modal-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
+          type="button"
+          class="btn-close modal-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
         >
           <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 384 512"
+            xmlns="http://www.w3.org/2000/svg"
+            height="1em"
+            viewBox="0 0 384 512"
           >
             <path
-                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
             />
           </svg>
         </button>
@@ -37,23 +37,23 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
           </p>
           <div class="mb-4">
             <input
-                type="text"
-                class="form-control p-3"
-                id="name"
-                placeholder="Ваше имя и фамилия"
-                ref="inputName"
+              type="text"
+              class="form-control p-3"
+              id="name"
+              placeholder="Ваше имя и фамилия"
+              ref="inputName"
             />
           </div>
           <div class="mb-3">
             <input
-                type="phone"
-                :value="number"
-                class="form-control p-3"
-                id="number"
-                placeholder="Номер телефона"
-                v-maska
-                data-maska="8 (###) ###-##-##"
-                ref="inputPhone"
+              type="phone"
+              :value="number"
+              class="form-control p-3"
+              id="number"
+              placeholder="Номер телефона"
+              v-maska
+              data-maska="8 (###) ###-##-##"
+              ref="inputPhone"
             />
           </div>
           <p class="fw-boler text-start text-danger mb-3 pb-0">
@@ -62,9 +62,9 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
         </div>
         <div class="modal-footer text-center p-5 pt-0">
           <button
-              type="button"
-              class="btn btn-primary w-100 mb-3 p-3 dialog-redirect"
-              v-on:click="call"
+            type="button"
+            class="btn btn-primary w-100 mb-3 p-3 dialog-redirect"
+            v-on:click="call"
           >
             Открыть счет
           </button>
@@ -81,38 +81,38 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" ref="navbar">
     <div class="container-fluid">
       <a
-          v-bind:class="[
+        v-bind:class="[
           'navbar-brand ms-0 me-auto',
           /*togglerActive ? 'fixed' : '',*/
           isMobile ? 'fade-left-mobile' : 'fade-left',
         ]"
-          href="/"
-          ref="logo"
+        href="/"
+        ref="logo"
       >
-        <img class="logo" src="/full_logo_white.png"/>
+        <img class="logo" src="/full_logo_white.png" />
       </a>
       <button
-          v-bind:class="[
+        v-bind:class="[
           'navbar-toggler',
           isFixed ? ' fixed' : '',
           togglerActive ? ' active' : '',
         ]"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo03"
-          aria-controls="navbarTogglerDemo03"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          ref="burger"
-          @click="navbarTogglered"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        ref="burger"
+        @click="navbarTogglered"
       >
         <span></span>
       </button>
 
       <div
-          class="collapse navbar-collapse"
-          id="navbarTogglerDemo03"
-          ref="navbar"
+        class="collapse navbar-collapse"
+        id="navbarTogglerDemo03"
+        ref="navbar"
       >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
           <li class="nav-item p-2">
@@ -123,73 +123,73 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
           </li>
           <li class="nav-item p-2">
             <a class="nav-link active fw-bolder" href="/courses"
-            ><span>Курсы</span>
+              ><span>Курсы</span>
               <span class="dynamic-hover-link__underline"></span
-              ></a>
+            ></a>
           </li>
           <li class="nav-item p-2">
             <a class="nav-link active fw-bolder" href="/economic-calendar"
-            ><span class="text-mob">Экономический календарь</span>
+              ><span class="text-mob">Экономический календарь</span>
               <span class="dynamic-hover-link__underline"></span
-              ></a>
+            ></a>
           </li>
           <li class="nav-item p-2">
             <a class="nav-link active fw-bolder" href="/#review"
-            ><span>Отзывы</span>
+              ><span>Отзывы</span>
               <span class="dynamic-hover-link__underline"></span
-              ></a>
+            ></a>
           </li>
           <li class="nav-item p-2">
-            <a class="nav-link active fw-bolder" href="/about"
-            ><span>О компании</span>
-              <span class="dynamic-hover-link__underline"></span
-              ></a>
+            <router-link to="/about" class="nav-link active fw-bolder">
+              <span>О компании</span>
+              <span class="dynamic-hover-link__underline"></span>
+            </router-link>
           </li>
         </ul>
         <span
-            v-bind:class="[
+          v-bind:class="[
             'navbar-text me-5',
             isMobile ? 'fade-left-mobile' : 'fade-right',
           ]"
         >
           <a
-              href="mailto:mir_bcs@mail.ru"
-              class="text-white text-decoration-none fw-bolder me-3"
-          ><font-awesome-icon
+            href="mailto:mir_bcs@mail.ru"
+            class="text-white text-decoration-none fw-bolder me-3"
+            ><font-awesome-icon
               :icon="['fas', 'envelope']"
               style="color: #ffffff"
               size="xl"
           /></a>
           <a
-              href="https://app.leadteh.ru/w/y4VC"
-              class="text-white text-decoration-none fw-bolder me-3"
+            href="https://app.leadteh.ru/w/y4VC"
+            class="text-white text-decoration-none fw-bolder me-3"
           >
-            <font-awesome-icon :icon="['fab', 'telegram']" size="xl"/>
+            <font-awesome-icon :icon="['fab', 'telegram']" size="xl" />
           </a>
           <a
-              href="tel:+79878197778"
-              class="text-white text-decoration-none fw-bolder me-3"
+            href="tel:+79878197778"
+            class="text-white text-decoration-none fw-bolder me-3"
           >
             <font-awesome-icon
-                :icon="['fas', 'phone']"
-                class="me-2"
-                size="xl"
+              :icon="['fas', 'phone']"
+              class="me-2"
+              size="xl"
             />+7 (987) 819-77-78
           </a>
         </span>
         <span
-            v-bind:class="[
+          v-bind:class="[
             'navbar-text ms-2',
             isMobile ? 'fade-right-mobile' : 'fade-right',
           ]"
         >
           <button
-              type="button"
-              class="btn-light btn fw-bolder"
-              data-bs-toggle="modal"
-              data-bs-target="#sendApplication"
-              style="position: relative; z-index: 2"
-              data-fade-up="true"
+            type="button"
+            class="btn-light btn fw-bolder"
+            data-bs-toggle="modal"
+            data-bs-target="#sendApplication"
+            style="position: relative; z-index: 2"
+            data-fade-up="true"
           >
             Оставить заявку
           </button>
@@ -285,7 +285,7 @@ nav .btn {
   }
 
   .nav-item:nth-child(3) .nav-link span:first-child {
-    display:block;
+    display: block;
     max-width: 100px;
     text-wrap: wrap;
   }
@@ -569,8 +569,7 @@ export default {
         type: typeStr,
       });
 
-      const url =
-          "https://lk.bcs-forex.ru/NewAccount/Bcsfx?partner=18875";
+      const url = "https://lk.bcs-forex.ru/NewAccount/Bcsfx?partner=18875";
 
       window.open(url);
     },
@@ -625,8 +624,7 @@ export default {
       }
     },
     redirect() {
-      const url =
-          "https://lk.bcs-forex.ru/NewAccount/Bcsfx?partner=18875";
+      const url = "https://lk.bcs-forex.ru/NewAccount/Bcsfx?partner=18875";
 
       window.open(url);
     },
