@@ -99,8 +99,7 @@
             <div class="row"></div>
             <div class="row">
               <div class="comment ms-0 me-auto comment-23 green">
-                Уведомление и разбор <br />
-                новых инвестиционных <br />
+                Разбор новых <br /> инвестиционных
                 стратегий
               </div>
               <div class="comment ms-auto me-0 comment-24 green">

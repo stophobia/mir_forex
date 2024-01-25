@@ -116,8 +116,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
       >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
           <li class="nav-item p-2">
-            <a class="nav-link active fw-bolder" href="/#methods">
-              <span>Наш метод</span>
+            <a class="nav-link active fw-bolder" href="/">
+              <span>Главная</span>
               <span class="dynamic-hover-link__underline"></span>
             </a>
           </li>

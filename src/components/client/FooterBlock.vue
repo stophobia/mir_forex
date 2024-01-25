@@ -46,13 +46,13 @@
         <div class="col-12 col-md-3 text-end">
           <ul class="nav flex-column">
             <li class="nav-item" v-if="page != 'application'">
-              <a class="nav-link" href="/#methods">Наш метод</a>
+              <a class="nav-link" href="/">Главная</a>
             </li>
             <li class="nav-item" v-if="page != 'application'">
               <a class="nav-link" href="/courses">Курсы</a>
             </li>
             <li class="nav-item" v-if="page != 'application'">
-              <a class="nav-link" href="/courses">Экономический<br>календарь</a>
+              <a class="nav-link" href="/economic-calendar">Экономический<br>календарь</a>
             </li>
             <li class="nav-item" v-if="page != 'application'">
               <a class="nav-link" href="/#review">Отзывы</a>
@@ -63,9 +63,6 @@
             <li class="nav-item">
               <a class="nav-link" href="/about">О компании</a>
             </li>
-            <!-- <li class="nav-item">
-                            <a class="nav-link" href="/admin">Администрирование</a>
-                        </li> -->
           </ul>
         </div>
       </div>

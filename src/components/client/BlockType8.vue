@@ -179,7 +179,7 @@ import BlockType10 from "@/components/client/BlockType10.vue";
   margin-top: 80px;
   padding: 15px 60px;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .swiper:before {

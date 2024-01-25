@@ -1,0 +1,198 @@
+[33mcommit c1972f76798f039c36cc654c247e8d3530db634e[m[33m ([m[1;36mHEAD -> [m[1;32mVikdi_Marks[m[33m, [m[1;31morigin/Vikdi_Marks[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Wed Jan 17 05:14:57 2024 +0300
+
+    fix error for deployment
+
+[33mcommit aa8f32287763f4960ed7745bd1997d4c6b8746a5[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Wed Jan 17 03:59:52 2024 +0300
+
+    fix error for deployment
+
+[33mcommit f846f73fc739e398412543248569ea1b7aec6918[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Wed Jan 17 03:56:44 2024 +0300
+
+    fix error for deployment
+
+[33mcommit d11715bb9d53a9d4d7a8ceaffd25b854c5f0f518[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Wed Jan 17 03:54:34 2024 +0300
+
+    fix error for deployment
+
+[33mcommit da8e64456969a2d79f0b7ff50adc1b78be476cae[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Mon Jan 15 09:33:03 2024 +0300
+
+    fix error for deployment
+
+[33mcommit 877db79f532f7a6d0380a9b1d8b2eb7369955cad[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Mon Jan 15 05:05:51 2024 +0300
+
+    fix error for deployment
+
+[33mcommit 1d65e1688a79b57e54a123ce61db0eb3838e415c[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Mon Jan 15 05:02:41 2024 +0300
+
+    economic-calendar
+
+[33mcommit 021162c4393481894c9b369245758a1de6f608fb[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Fri Jan 12 01:43:55 2024 +0300
+
+    update
+
+[33mcommit 88c61997b0025e0860124a0772a3c8d123867b66[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Fri Jan 12 01:43:41 2024 +0300
+
+    update
+
+[33mcommit 7963309ab300d4cbc9b53f305a196605330bf3c9[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Wed Jan 10 20:40:21 2024 +0300
+
+    update
+
+[33mcommit 6e91bd5cc5d3b13eff66b5cb4b8917f81fa05c4e[m[33m ([m[1;31morigin/site[m[33m, [m[1;32msite[m[33m)[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Wed Jan 10 20:21:41 2024 +0300
+
+    update
+
+[33mcommit d52319c91dde14a6df48d396076577213aea3720[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Wed Jan 10 20:20:08 2024 +0300
+
+    update
+
+[33mcommit 5db2a4dd23f40465271400ca238904d054e50bf6[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sat Jan 6 19:35:32 2024 +0300
+
+    update
+
+[33mcommit 695ba591d1624b733a6b67e62a13e025a8e4d4dd[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sat Jan 6 19:33:21 2024 +0300
+
+    update
+
+[33mcommit 1a44b0d9276b0bd4879ab4971aa71a0fcafb1064[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sat Jan 6 00:05:02 2024 +0300
+
+    update
+
+[33mcommit 52122ea1feec9418f9670cb4ce02b14385117f8c[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Fri Dec 29 23:03:29 2023 +0300
+
+    update
+
+[33mcommit ebbaa6ccc19a1eb1808f7d5a87e7d1e2b7bef4c5[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Fri Dec 29 23:01:51 2023 +0300
+
+    update
+
+[33mcommit 992a3f8a680dfd8045cb50b8e3f3cb1ce7822aab[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Fri Dec 29 22:55:17 2023 +0300
+
+    update
+
+[33mcommit 76908a48001c5e1391a4f8041c3501a56fe3ed90[m
+Merge: 8a25cb4 a19b998
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Thu Dec 28 08:13:49 2023 +0300
+
+    Merge remote-tracking branch 'origin/Vikdi_Marks' into Vikdi_Marks
+
+[33mcommit 8a25cb4281a2a8c2ed66f36e2976fa729bbc54bc[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Thu Dec 28 08:13:32 2023 +0300
+
+    dist
+
+[33mcommit a19b9980c440765a84cb21073508850098d32388[m[33m ([m[1;31morigin/dist[m[33m, [m[1;32mdist[m[33m)[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Thu Dec 28 08:02:44 2023 +0300
+
+    rename
+
+[33mcommit 85c2b7a61eb60be956a4ba6006def22a5752833a[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Nov 12 20:11:36 2023 +0300
+
+    init
+
+[33mcommit 240cd1c38d6d7a807a0d11c9dd325ad2c11f1a4c[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Mon Sep 4 01:36:34 2023 +0300
+
+    burger - position: fixed;
+
+[33mcommit 9992c36f6947c41c783564b9f6d93b11866e5a61[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 22:16:36 2023 +0300
+
+    tree - desktop
+
+[33mcommit f4d362edc63b36e242a235e4adcbb0df8d40d23c[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 17:19:35 2023 +0300
+
+    BlockType6 - change styles img
+
+[33mcommit 91909eefd7313fdb88f6012c4949a6dcdd477328[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 17:18:45 2023 +0300
+
+    BlockType6 - change text
+
+[33mcommit b61bde7a0734fdabd43686810c2c9ecf2b02beea[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 17:05:35 2023 +0300
+
+    BlockType9 - cards like in Figma
+
+[33mcommit 50c6cf18f17227f72b234f65a06b5860241e7c80[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 17:05:01 2023 +0300
+
+    BlockType9 - replace text
+
+[33mcommit 429632be62983f48c6492949952351479a99d6ec[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 16:29:59 2023 +0300
+
+    BlockType9 - replace text
+
+[33mcommit 381290be7d930d0a8d6a9631c752894aab00c82b[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 16:26:16 2023 +0300
+
+    BlockType5 - replace text
+
+[33mcommit de951911ad10adae3c5731056f18afe7e1626fae[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 16:20:38 2023 +0300
+
+    HomeView - change button position
+
+[33mcommit 31f9d99ab744624cb2b88e82b4ec0465cb27a656[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 16:16:40 2023 +0300
+
+    install prettier
+
+[33mcommit 51aac540424b891a0e91c87cf52af1165e00846c[m
+Author: VikdiMarks <sarankov.dima@gmail.com>
+Date:   Sun Sep 3 16:05:31 2023 +0300
+
+    init - 03.09.23
