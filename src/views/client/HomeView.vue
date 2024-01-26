@@ -209,7 +209,7 @@ setTimeout(() => {
       <div class="w-100 intro-wrap">
         <Carousel
           class="d-flex intro-carousel"
-          :autoplay="8000"
+          :autoplay="13000"
           :items-to-show="1"
           :touchDrag="false"
           :mouseDrag="false"

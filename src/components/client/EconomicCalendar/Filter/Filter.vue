@@ -1,60 +1,88 @@
 <template>
-  <Country :tabs="tabs" @updateTabs="updateTabs" />
+  <Country :tabs="countries" @updateTabs="updateFilterCountries"/>
+  <Settings :tabs="countries" @updateTabs="updateFilterCountries"/>
   <div class="filter">
     <div class="filter__left">
       <div class="not-flag">
-        <font-awesome-icon :icon="['fat', 'globe']" />
+        <font-awesome-icon :icon="['fat', 'globe']"/>
       </div>
       <div
-        class="selected-flags"
-        data-bs-toggle="modal"
-        data-bs-target="#country"
+          class="selected-flags"
+          data-bs-toggle="modal"
+          data-bs-target="#country"
       >
         <ul class="filter-select-flags">
-          <li v-for="tab in lastThreeTabs" :key="tab.code">
-            <img class="flag" :src="`/public/country/${tab.code}.svg`" alt="" />
+          <li v-for="tab in lastThreeTabs()" :key="tab.code">
+            <img class="flag" :src="`/public/country/${tab.code}.svg`" alt=""/>
           </li>
-          <li v-if="tabs.length > 0">
-            <span class="count">+{{ tabs.length }}</span>
+          <li v-if="countries.length > 0">
+            <span class="count">+{{ countries.length }}</span>
           </li>
-          <li v-if="tabs.length === 0">
-            <img class="flag" src="/icons/globe.svg" alt="" />
+          <li v-if="countries.length === 0">
+            <img class="flag" src="/icons/globe.svg" alt=""/>
           </li>
         </ul>
       </div>
-      <button class="volatility">
-        <img src="/icons/settings.svg" alt="" />
+      <button
+          class="settings"
+          data-bs-toggle="modal"
+          data-bs-target="#settings"
+      >
+        <img src="/icons/settings.svg" alt=""/>
         <span>Настройки</span>
       </button>
     </div>
     <span class="filter--separator"></span>
     <div class="filter__middle">
-      <button class="filter__middle--day">Вчера</button>
-      <button class="filter__middle--day">Сегодня</button>
-      <button class="filter__middle--day">Завтра</button>
-      <button class="filter__middle--day">Эта неделя</button>
+      <button class="filter__middle--day" :class="{'active': panelDate.yesterdayDate}" @click="selectDate"
+              id="yesterdayDate" :data-date="getDynamicDate(-1)">Вчера
+      </button>
+      <button class="filter__middle--day" :class="{'active': panelDate.todayDate}" @click="selectDate" id="todayDate"
+              :data-date="getDynamicDate(0)">Сегодня
+      </button>
+      <button class="filter__middle--day" :class="{'active': panelDate.tomorrowDate}" @click="selectDate"
+              id="tomorrowDate" :data-date="getDynamicDate(1)">Завтра
+      </button>
+      <button class="filter__middle--day" :class="{'active': panelDate.thisWeekDate}" @click="selectDate"
+              id="thisWeekDate" :data-date="getDynamicWeekRange()">Эта неделя
+      </button>
       <VueDatePicker
-        v-model="date"
-        range
-        multi-calendars
-        dark
-        locale="ru"
-        :format="format"
-        cancelText="Отмена"
-        selectText="Выбрать"
-        :enable-time-picker="false"
-        placeholder="Выберите период"
-        input-class-name="dp-custom-input"
-        menu-class-name="dp-custom-menu"
-        calendar-class-name="dp-custom-calendar"
+          v-model="date"
+          range
+          multi-calendars
+          dark
+          locale="ru"
+          :format="format"
+          cancelText="Отмена"
+          selectText="Выбрать"
+          :enable-time-picker="false"
+          placeholder="Выберите период"
+          input-class-name="dp-custom-input"
+          menu-class-name="dp-custom-menu"
+          calendar-class-name="dp-custom-calendar"
+          ref="datepicker"
+          @blur="selectDate"
       />
     </div>
     <span class="filter--separator"></span>
     <div class="filter__right">
-      <button class="utc">
-        <img src="/icons/clock.svg" alt="" />
-        <span>19:17 (UTC+3)</span>
-      </button>
+      <Dropdown :bodyStyles="{position: 'absolute', zIndex: '9999', left: '50%', transform: 'translateX(-50%)'}">
+        <template v-slot:header>
+          <button class="utc">
+            <img src="/icons/clock.svg" alt=""/>
+            <span>{{ timezone }}</span>
+          </button>
+        </template>
+        <template v-slot:main>
+          <div class="utc__body">
+            <button class="utc" v-for="timezone in timezones" :key="timezone.title" @click="selectTimezone"
+                    :id="timezone.title">
+              <img src="/icons/clock.svg" alt=""/>
+              <span>{{ timezone.title }}</span>
+            </button>
+          </div>
+        </template>
+      </Dropdown>
     </div>
   </div>
 </template>
@@ -64,6 +92,34 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.utc__body {
+  background-color: rgb(12 26 80 / 85%);
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.utc__body::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(41, 61, 138, 0.4);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+
+.utc__body::-webkit-scrollbar-thumb {
+  background: rgba(3, 14, 58, 0.66);
+}
+
+.utc__body::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.utc__body .utc {
+  border-radius: 0 !important;
 }
 
 button {
@@ -180,7 +236,7 @@ button {
   column-gap: 10px;
 }
 
-.filter__left .volatility {
+.filter__left .settings {
   display: flex;
   align-items: center;
   column-gap: 5px;
@@ -194,6 +250,8 @@ button {
 .filter-select-flags {
   display: flex;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .filter-select-flags li {
@@ -248,8 +306,8 @@ button {
 .filter__middle--day.active,
 .filter__right .categories:hover,
 .filter__right .categories.active,
-.filter__left .volatility:hover,
-.filter__left .volatility.active,
+.filter__left .settings:hover,
+.filter__left .settings.active,
 .filter__right .utc:hover,
 .filter__right .utc.active {
   background-color: rgba(41, 61, 138, 0.4);
@@ -277,49 +335,139 @@ button {
 import Country from "@/components/client/EconomicCalendar/Modals/Country.vue";
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
+import timezones from "@/components/client/EconomicCalendar/Filter/timezones.mjs";
 
-import { ref, onMounted } from "vue";
+import {ref, onMounted, defineProps, defineEmits} from "vue";
+import Dropdown from "@/components/UI/Dropdown.vue";
+import Settings from "@/components/client/EconomicCalendar/Modals/Settings.vue";
 
+const emit = defineEmits();
 const date = ref();
+const datepicker = ref(null);
+const panelDate = ref({
+  yesterdayDate: false,
+  todayDate: false,
+  tomorrowDate: false,
+  thisWeekDate: false,
+});
+const {
+  countries,
+  updateFilterCountries,
+  startDay,
+  endDay,
+  timezone
+} = defineProps(["countries", "updateFilterCountries", "startDay", "endDay", "timezone"]);
+
+const clearDatapicker = () => {
+  if (datepicker) {
+    datepicker.value.clearValue()
+  }
+}
+const selectDate = (e) => {
+  if (e && e.target) {
+    const panelDateItem = e.target.dataset.date;
+    const id = e.target.id;
+
+    for (const key in panelDate.value) {
+      panelDate.value[key] = key === id;
+    }
+
+    if (date.value) clearDatapicker();
+
+    const dateParts = panelDateItem.split("-");
+
+    emit("updateFilterDate", dateParts[0], dateParts[1])
+
+    return;
+  }
+
+  if (!date.value) {
+    return;
+  }
+  const startDay = formatDate(date.value[0]);
+  const endDay = date.value[1] ? formatDate(date.value[1]) : startDay;
+
+  emit("updateFilterDate", startDay, endDay);
+
+  if (startDay && endDay) {
+    for (const key in panelDate.value) {
+      panelDate.value[key] = false;
+    }
+  }
+}
+
+
+function getDynamicDate(dayDifference) {
+  const currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() + dayDifference);
+  const formattedDate = this.formatDate(currentDate);
+  return `${formattedDate}-${formattedDate}`;
+}
+
+function getDynamicWeekRange() {
+  const currentDate = new Date();
+  const startOfWeek = new Date(currentDate);
+  startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+  const endOfWeek = new Date(currentDate);
+  endOfWeek.setDate(currentDate.getDate() + (7 - currentDate.getDay()));
+  return `${this.formatDate(startOfWeek)}-${this.formatDate(endOfWeek)}`;
+}
+
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  return `${day}.${month}.${year}`;
+}
+
+function selectTimezone(e) {
+  if (!e) return;
+
+  const id = e.target.className.includes("utc") ? e.target.id : e.target.closest(".utc").id;
+  emit("updateFilterTimezone", id);
+}
 
 const format = (date) => {
-  console.log("date", date);
   const startDate = {
-    day: date[0].getDate(),
-    month: date[0].getMonth() + 1,
-    year: date[0].getFullYear(),
+    day: date[0]?.getDate(),
+    month: date[0]?.getMonth() + 1,
+    year: date[0]?.getFullYear(),
   };
   const endDate = {
-    day: date[1].getDate(),
-    month: date[1].getMonth() + 1,
-    year: date[1].getFullYear(),
+    day: "",
+    month: "",
+    year: "",
   };
+
+  if (date[1]) {
+    endDate.day = date[1]?.getDate();
+    endDate.month = date[1]?.getMonth() + 1;
+    endDate.year = date[1]?.getFullYear();
+  } else {
+    endDate.day = date[0]?.getDate();
+    endDate.month = date[0]?.getMonth() + 1;
+    endDate.year = date[0]?.getFullYear();
+  }
 
   return `${startDate.day}.${startDate.month}.${startDate.year} - ${endDate.day}.${endDate.month}.${endDate.year}`;
 };
+
+const lastThreeTabs = () => {
+  console.log("countries.slice(-3)", countries.slice(-3));
+  return countries.slice(-3);
+}
 </script>
 
 <script>
 import CountryFlag from "vue-country-flag-next";
+
 export default {
   components: {
     CountryFlag,
   },
-  data() {
-    return {
-      tabs: [],
-    };
+  methods: {},
+  computed: {},
+  mounted() {
   },
-  methods: {
-    updateTabs(newTabs) {
-      this.tabs = newTabs;
-    },
-  },
-  computed: {
-    lastThreeTabs() {
-      return this.tabs.slice(-3);
-    },
-  },
-  mounted() {},
 };
 </script>

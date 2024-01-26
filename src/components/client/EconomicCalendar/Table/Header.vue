@@ -39,6 +39,7 @@
   align-items: center;
   margin-bottom: 10px;
   text-align: center;
+  padding: 0;
 }
 
 .table__header li:nth-child(5) p {
@@ -46,8 +47,8 @@
 }
 
 p {
-  background: none;
-  color: white;
-  padding: 0;
+  background: none!important;
+  color: white!important;
+  padding: 0!important;
 }
 </style>

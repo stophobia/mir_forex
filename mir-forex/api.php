@@ -4,10 +4,10 @@
 
     header('Content-Type: application/json; charset=utf-8');
 
-    $db_host        = '31.31.196.208:3306';
-    $db_user        = 'u1292564_mir';
-    $db_pass        = 'Cirwiw-vuzges-tysfe1';
-    $db_database    = 'u1292564_mirforex';
+    $db_host        = 'localhost';
+    $db_user        = 'mirforex';
+    $db_pass        = '@1mirforex523jkl_4';
+    $db_database    = 'mir_forex';
 
     $link = mysqli_connect($db_host,$db_user,$db_pass);
 
@@ -17,7 +17,7 @@
     $postDataJson = file_get_contents('php://input');
     $JSON = json_decode($postDataJson, true);
 
-    if ($JSON["login"]) { 
+    if ($JSON["login"]) {
         session_start();
 
         $sql = "SELECT * FROM `users` WHERE `username` = '".$JSON['login']."' AND `password` = '".md5($JSON['password'])."'";
@@ -119,11 +119,11 @@
             }
 
             array_push($data, [
-                'id' => $row["id"], 
-                'username' => $row["username"], 
-                'text' => $row["text"], 
-                'code' => $row["code"], 
-                'active' => $activeBool, 
+                'id' => $row["id"],
+                'username' => $row["username"],
+                'text' => $row["text"],
+                'code' => $row["code"],
+                'active' => $activeBool,
                 'created_at' => $row["created_at"]
             ]);
 
@@ -151,11 +151,11 @@
                 }
 
                 array_push($data, [
-                    'id' => $row["id"], 
-                    'username' => $row["username"], 
-                    'type' => $typeStr, 
-                    'phone_number' => $row["phone_number"], 
-                    'description' => $row["description"], 
+                    'id' => $row["id"],
+                    'username' => $row["username"],
+                    'type' => $typeStr,
+                    'phone_number' => $row["phone_number"],
+                    'description' => $row["description"],
                     'created_at' => $row["created_at"]
                 ]);
 
@@ -188,11 +188,11 @@
                 }
 
                 array_push($data, [
-                    'id' => $row["id"], 
-                    'username' => $row["username"], 
-                    'type' => $typeStr, 
-                    'phone_number' => $row["phone_number"], 
-                    'description' => $row["description"], 
+                    'id' => $row["id"],
+                    'username' => $row["username"],
+                    'type' => $typeStr,
+                    'phone_number' => $row["phone_number"],
+                    'description' => $row["description"],
                     'created_at' => $row["created_at"]
                 ]);
 
@@ -221,10 +221,10 @@
                 }
 
                 array_push($data, [
-                    'id' => $row["id"], 
-                    'username' => $row["username"], 
-                    'code' => $row["code"], 
-                    'text' => $row["text"], 
+                    'id' => $row["id"],
+                    'username' => $row["username"],
+                    'code' => $row["code"],
+                    'text' => $row["text"],
                     'active' => $activeBool,
                     'created_at' => $row["created_at"]
                 ]);
@@ -271,5 +271,4 @@
             ));
         }
     }
-  
 ?>

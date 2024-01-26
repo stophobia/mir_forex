@@ -3,7 +3,7 @@
     <header class="header" :style="isOpen ? activeHeaderStyles : {}" @click="toggle">
       <slot name="header"></slot>
     </header>
-    <main class="main" :style="{ maxHeight: contentHeight + 'px' }" ref="dropdownContent">
+    <main class="main" :style="{ maxHeight: contentHeight + 'px', ...(this.isOpen ? this.bodyActiveStyles : {}), ...this.bodyStyles }" ref="dropdownContent" @click="toggle">
       <slot name="main"></slot>
     </main>
   </div>
@@ -14,7 +14,6 @@
   width: fit-content;
   background: none;
   padding: 0;
-  overflow: hidden;
 }
 
 .header {
@@ -38,6 +37,8 @@ export default {
     activeHeaderStyles: Object,
     dropdownStyles: Object,
     hoverHeaderStyles: Object,
+    bodyActiveStyles: Object,
+    bodyStyles: Object,
   },
   data() {
     return {

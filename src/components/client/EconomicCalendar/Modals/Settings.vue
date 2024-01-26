@@ -1,63 +1,61 @@
 <template>
   <div
     class="modal fade"
-    id="country"
+    id="settings"
     tabindex="-1"
-    aria-labelledby="country"
+    aria-labelledby="settings"
     aria-hidden="true"
     ref="modal"
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="header">
-          <h3>Выберите страны</h3>
+          <h3>Настройки</h3>
           <button
             class="modal-close"
             data-bs-toggle="modal"
-            data-bs-target="#country"
+            data-bs-target="#settings"
           >
             <img src="/icons/xmark.svg" alt="" />
           </button>
         </div>
-        <div class="search">
-          <img src="/icons/search.svg" alt="" />
-          <input v-model="searchText" type="text" />
-        </div>
-        <div class="tabs-list">
-          <button v-for="tab in tabs" :key="tab.code" class="tab">
-            <img class="flag" :src="`/public/country/${tab.code}.svg`" alt="" />
-            <span class="name">{{ tab.code }}</span>
-            <img @click="removeTab(tab)" src="/icons/xmark.svg" alt="" />
-          </button>
-        </div>
-        <div class="quick-choice">
-          <button>
-            <img src="/icons/fire.svg" alt="" />
-            <span>Топ стран</span>
-          </button>
-          <button
-            @click="selectAllCountries"
-            :class="{ active: tabs.length === countries.length }"
-          >
-            <img src="/icons/globe.svg" alt="" />
-            <span>Весь мир</span>
-          </button>
-        </div>
-        <div class="select__list">
-          <button
-            class="select__list--item"
-            v-for="country in filteredCountries"
-            :key="country.code"
-            @click="toggleCountry(country)"
-            :class="{ active: isCountrySelected(country) }"
-          >
-            <img
-              class="flag"
-              :src="`/country/${country.code}.svg`"
-              alt=""
-            />
-            <span class="name">{{ country.name }}</span>
-          </button>
+        <div class="content">
+          <div class="content__item">
+            <div class="row--header">
+              <h5>Категории</h5>
+              <button class="select__list--item">
+                <img src="/icons/checkbox.svg" alt="" />
+                <span>Выбрать все</span>
+              </button>
+            </div>
+            <div class="select__list">
+              <button
+                  class="select__list--item"
+                  v-for="item in categories"
+                  :key="item.id"
+              >
+                <span class="name">{{ item.title }}</span>
+              </button>
+            </div>
+          </div>
+          <div class="content__item">
+            <div class="row--header">
+              <h5>Волатильность</h5>
+              <button class="select__list--item">
+                <img src="/icons/checkbox.svg" alt="" />
+                <span>Выбрать все</span>
+              </button>
+            </div>
+            <div class="select__list">
+              <button
+                  class="select__list--item"
+                  v-for="item in volatility"
+                  :key="item.value"
+              >
+                <span class="name">{{ item.title }}</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -73,6 +71,19 @@ input {
   outline: 0;
   background: none;
   border: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.row--header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .modal-content {
@@ -228,7 +239,9 @@ input {
 </style>
 <script setup>
 import { countries } from "@/components/client/EconomicCalendar/Filter/countries";
+import categories from "@/components/client/EconomicCalendar/Filter/categories";
 import { ref, defineProps, defineEmits, computed } from "vue";
+import volatility from "@/components/client/EconomicCalendar/Filter/volatility";
 
 const { tabs } = defineProps(["tabs"]);
 const emit = defineEmits();

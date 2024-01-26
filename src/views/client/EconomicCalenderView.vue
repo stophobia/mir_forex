@@ -9,15 +9,12 @@ import GenericModalMsg from "@/components/client/GenericModalMsg.vue";
 import Preloader from "@/components/client/Preloader.vue";
 import LicenseModal from "@/components/client/LicenseModal.vue";
 
-import { vMaska } from "maska";
-import { ref, inject } from "vue";
-import { h } from "vue";
-import { useLoading } from "vue-loading-overlay";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {vMaska} from "maska";
+import {ref} from "vue";
+import {h} from "vue";
+import {useLoading} from "vue-loading-overlay";
 import Filter from "@/components/client/EconomicCalendar/Filter/Filter.vue";
-import Dropdown from "@/components/UI/Dropdown.vue";
 import Table from "@/components/client/EconomicCalendar/Table/Table.vue";
-import Country from "@/components/client/EconomicCalendar/Modals/Country.vue";
 
 const $loading = useLoading({
   "background-color": "#0d1118",
@@ -29,25 +26,25 @@ const $loading = useLoading({
 
 const fullPage = ref(false);
 const loader = $loading.show(
-  {},
-  {
-    before: h(
-      "img",
-      {
-        src: "/logo_white.png",
-        style: "width: 150px",
-        class: "d-block",
-      },
-      [],
-    ),
-    after: h(
-      "div",
-      {
-        class: "preloader-line",
-      },
-      [],
-    ),
-  },
+    {},
+    {
+      before: h(
+          "img",
+          {
+            src: "/logo_white.png",
+            style: "width: 150px",
+            class: "d-block",
+          },
+          [],
+      ),
+      after: h(
+          "div",
+          {
+            class: "preloader-line",
+          },
+          [],
+      ),
+    },
 );
 
 setTimeout(() => {
@@ -57,28 +54,28 @@ setTimeout(() => {
 
 <template>
   <div
-    class="modal fade"
-    id="sendApplication"
-    tabindex="-1"
-    aria-labelledby="sendApplication"
-    aria-hidden="true"
-    ref="modal"
+      class="modal fade"
+      id="sendApplication"
+      tabindex="-1"
+      aria-labelledby="sendApplication"
+      aria-hidden="true"
+      ref="modal"
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <button
-          type="button"
-          class="btn-close modal-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
+            type="button"
+            class="btn-close modal-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="1em"
-            viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 384 512"
           >
             <path
-              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
             />
           </svg>
         </button>
@@ -86,36 +83,36 @@ setTimeout(() => {
           <h1 class="mb-3">Оставить заявку</h1>
           <div class="mb-4">
             <input
-              type="text"
-              class="form-control p-3"
-              id="call_name"
-              placeholder="Ваше имя и фамилия"
-              required
-              ref="inputName"
+                type="text"
+                class="form-control p-3"
+                id="call_name"
+                placeholder="Ваше имя и фамилия"
+                required
+                ref="inputName"
             />
           </div>
           <div class="mb-3">
             <input
-              type="phone"
-              :value="number"
-              v-maska
-              data-maska="8 (###) ###-##-##"
-              class="form-control p-3"
-              id="call_number"
-              placeholder="Номер телефона"
-              required
-              ref="inputPhone"
+                type="phone"
+                :value="number"
+                v-maska
+                data-maska="8 (###) ###-##-##"
+                class="form-control p-3"
+                id="call_number"
+                placeholder="Номер телефона"
+                required
+                ref="inputPhone"
             />
           </div>
         </div>
         <div
-          class="modal-footer text-center p-5 pt-0 border-0 flex flex-column align-center"
+            class="modal-footer text-center p-5 pt-0 border-0 flex flex-column align-center"
         >
           <button
-            type="button"
-            class="btn btn-primary p-3 m-0 mt-4 w-100 mb-3"
-            v-on:click="call()"
-            :disabled="isButtonDisabled"
+              type="button"
+              class="btn btn-primary p-3 m-0 mt-4 w-100 mb-3"
+              v-on:click="call()"
+              :disabled="isButtonDisabled"
           >
             Заказать звонок
           </button>
@@ -132,31 +129,34 @@ setTimeout(() => {
     </div>
   </div>
 
-  <GenericModalMsg :type="GenericMsgType" />
+  <GenericModalMsg :type="GenericMsgType"/>
 
-  <ReviewModalMsg :type="ReviewlMsgType" />
-  <ReviewModalCreate @onReviewResult="onReviewResult" />
+  <ReviewModalMsg :type="ReviewlMsgType"/>
+  <ReviewModalCreate @onReviewResult="onReviewResult"/>
   <ReviewModal
-    :name="reviewData.name"
-    :date="reviewData.date"
-    :text="reviewData.text"
+      :name="reviewData.name"
+      :date="reviewData.date"
+      :text="reviewData.text"
   />
-  <SupportModal :title="supportData.title" :text="supportData.text" />
-  <LicenseModal />
+  <SupportModal :title="supportData.title" :text="supportData.text"/>
+  <LicenseModal/>
 
-  <Preloader />
-  <TopHeader />
+  <Preloader/>
+  <TopHeader/>
   <main class="main">
     <section class="content">
       <h1 class="content__title">Экономический календарь</h1>
-      <Filter />
-      <Table />
+      <Filter :countries="filterData.countries" :categories="filterData.categories" :volatility="filterData.volatility"
+              :startDay="filterData.startDay" :endDay="filterData.endDay" :timezone="filterData.timezone"
+              :updateFilterCountries="updateFilterCountries" @updateFilterDate="updateFilterDate"
+              @updateFilterTimezone="updateFilterTimezone"/>
+      <Table/>
     </section>
     <section class="info">
       <h1 class="content__title">
         Экономические новости Форекс в реальном времени
       </h1>
-      <br />
+      <br/>
       <p class="info__top">
         В экономическом календаре трейдер найдёт информацию о значимых событиях
         не только на неделю вперёд, но и на период, который выберет он сам.
@@ -167,12 +167,12 @@ setTimeout(() => {
         странице наглядно продемонстрирует ценные статистические отчёты,
         экономические индикаторы (список можно изменять самостоятельно), а также
         главные события банковской сферы.
-        <br />
-        <br />
+        <br/>
+        <br/>
         Календарь от Международный институт рынка — это ваше подспорье в
         планировании торговой стратегии.
       </p>
-      <br />
+      <br/>
       <p class="info__hidden">
         Международный институт рынка публикует экономический календарь
         исключительно для информационных целей. Демонстрация на сайте
@@ -192,7 +192,7 @@ setTimeout(() => {
       </p>
     </section>
   </main>
-  <FooterBlock />
+  <FooterBlock/>
 </template>
 
 <style scoped>
@@ -250,8 +250,8 @@ button {
 
   color: white;
   background-image: linear-gradient(
-    rgba(12, 16, 32, 1) 16%,
-    rgba(27, 39, 82, 1)
+      rgba(12, 16, 32, 1) 16%,
+      rgba(27, 39, 82, 1)
   );
 }
 
@@ -279,9 +279,9 @@ button {
 
 .btn-light {
   background-image: linear-gradient(
-    162deg,
-    white 23.95%,
-    rgba(52, 91, 219, 0.3)
+      162deg,
+      white 23.95%,
+      rgba(52, 91, 219, 0.3)
   );
   margin-bottom: 50px;
   padding: 15px 50px;
@@ -291,9 +291,9 @@ button {
 
 .btn-dark {
   background-image: linear-gradient(
-    283.54deg,
-    #878787 -39.35%,
-    rgba(86, 86, 86, 0) 85.21%
+      283.54deg,
+      #878787 -39.35%,
+      rgba(86, 86, 86, 0) 85.21%
   );
   background-color: transparent;
   margin-top: 50px;
@@ -516,10 +516,15 @@ article {
 </style>
 
 <script>
-import { defineComponent } from "vue";
-import { Carousel, Navigation, Slide } from "vue3-carousel";
+import {Carousel, Navigation, Slide} from "vue3-carousel";
 
 import "vue3-carousel/dist/carousel.css";
+import timezones from "@/components/client/EconomicCalendar/Filter/timezones.mjs";
+import moment from "moment-timezone";
+import 'moment/locale/ru';
+import ru from "moment/dist/locale/ru"
+
+moment.locale("ru", ru);
 
 export default {
   name: "Autoplay",
@@ -548,12 +553,20 @@ export default {
       dropdown: false,
       contentHeight: 0,
       linkPage: location.href,
+      filterData: {
+        countries: [],
+        volatility: [],
+        categories: [],
+        startDay: "",
+        endDay: "",
+        timezone: this.getUserTimeZone()
+      }
     };
   },
   mounted() {
     document
-      .querySelector("#call_number")
-      .addEventListener("input", (e) => console.log(e));
+        .querySelector("#call_number")
+        .addEventListener("input", (e) => console.log(e));
 
     this.$nextTick(() => {
       const hash = window.location.hash;
@@ -578,7 +591,7 @@ export default {
     if (lastClickTime) {
       const currentTime = new Date().getTime();
       const hoursPassed = Math.floor(
-        (currentTime - Number(lastClickTime)) / 3600000,
+          (currentTime - Number(lastClickTime)) / 3600000,
       );
 
       if (hoursPassed < 12) {
@@ -586,7 +599,8 @@ export default {
       }
     }
   },
-  created() {},
+  created() {
+  },
   methods: {
     close() {
       const btnClose = this.$refs.closeModal;
@@ -597,7 +611,7 @@ export default {
       modal.removeAttribute("aria-modal");
       modal.setAttribute("aria-hidden", true);
       [...document.querySelectorAll(".modal-backdrop.show")].forEach(
-        (item) => (item.style.display = "none"),
+          (item) => (item.style.display = "none"),
       );
 
       document.body.style.overflow = "auto";
@@ -702,6 +716,35 @@ export default {
         this.contentHeight = this.dropdown ? content.scrollHeight : 0;
       });
     },
+    updateFilterCountries(newCountries) {
+      this.filterData.countries = newCountries;
+    },
+    updateFilterDate(newStartDay, newEndDay) {
+      console.log("newStartDay", newStartDay)
+      console.log("newEndDay", newEndDay)
+      this.filterData.startDay = newStartDay;
+      this.filterData.endDay = newEndDay;
+    },
+    updateFilterTimezone(newTimezone) {
+      console.log("update timezone", newTimezone)
+      this.filterData.timezone = newTimezone;
+    },
+    pad(num, size) {
+      let s = num + "";
+      while (s.length < size) s = "0" + s;
+      return s;
+    },
+    getUserTimeZone() {
+      const now = new Date();
+      const timeZoneOffsetHours = -now.getTimezoneOffset() / 60 * 100;
+      const timeZone = moment.tz.guess();
+      const timeZoneRu = moment.tz(timeZone).zoneAbbr();
+
+      const userTimeZone = timezones.find(zone => zone.value === `+${this.pad(timeZoneOffsetHours, 4)}` && zone.title.includes(timeZone));
+      const defaultTimeZone = timezones.find(zone => zone.title.includes("Москва"));
+
+      return userTimeZone ? userTimeZone.title : defaultTimeZone.title;
+    }
   },
 };
 </script>
