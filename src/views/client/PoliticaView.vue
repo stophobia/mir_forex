@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <TopHeader />
+  <TopHeader :darkTheme="true" />
   <div class="main">
     <div class="container header">
       <h1>Политика конфиденциальности</h1>

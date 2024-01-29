@@ -1,6 +1,11 @@
 <script setup>
 import { vMaska } from "maska";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+
+import {defineProps} from "vue";
+
+const {darkTheme} = defineProps(["darkTheme"])
 </script>
 
 <template>
@@ -78,11 +83,11 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
     </div>
   </div>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" ref="navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" ref="navbar" :class="{'dark': darkTheme}">
     <div class="container-fluid">
       <a
         v-bind:class="[
-          'navbar-brand ms-0 me-auto',
+          'navbar-brand logo ms-0 me-auto',
           /*togglerActive ? 'fixed' : '',*/
           isMobile ? 'fade-left-mobile' : 'fade-left',
         ]"
@@ -235,6 +240,14 @@ nav .btn {
 
 .navbar-nav {
   animation: ease 5s fade;
+}
+
+.navbar-brand img {
+  filter: invert(100%) sepia(1%) saturate(6%) hue-rotate(52deg) brightness(104%) contrast(100%);
+}
+
+.navbar.dark .navbar-brand img {
+  filter: none;
 }
 
 .openCount {
@@ -531,6 +544,34 @@ nav .btn {
 
 .nav-link span:first-child {
   text-wrap: nowrap;
+}
+
+.nav-link {
+  color: black!important;
+}
+
+.navbar.dark .nav-link {
+  color: white!important;
+}
+
+.navbar-text a{
+  color: black!important;
+}
+
+.navbar-text svg{
+  color: black!important;
+}
+
+.navbar.dark .navbar-text {
+  color: white!important;
+}
+
+.navbar.dark .navbar-text a{
+  color: white!important;
+}
+
+.navbar.dark .navbar-text svg{
+  color: white!important;
 }
 
 .dynamic-hover-link__underline {

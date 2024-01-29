@@ -202,7 +202,7 @@ setTimeout(() => {
   <LicenseModal />
 
   <Preloader />
-  <TopHeader />
+  <TopHeader :darkTheme="true" />
   <!-- <TradingView class="charts"/> -->
   <div class="main">
     <div class="d-flex align-items-center h-100" style="overflow-y: hidden">

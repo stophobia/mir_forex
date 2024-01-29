@@ -142,35 +142,35 @@ setTimeout(() => {
   <LicenseModal/>
 
   <Preloader/>
-  <TopHeader/>
-  <main class="main">
+  <TopHeader :darkTheme="darkTheme"/>
+  <main class="main" ref="main">
     <section class="content">
-      <h1 class="content__title">Экономический календарь</h1>
+      <div class="content__title">
+        <h1 class="">Экономический календарь</h1>
+        <div class="icon" @click="switchTheme">
+          <div class="icon-switcher" data-js-icon-switcher="data-js-icon-switcher">
+            <input class="control" type="checkbox" :checked="this.darkTheme">
+            <div class="peg"></div>
+            <div class="bg"></div>
+          </div>
+        </div>
+      </div>
       <Filter :countries="filterData.countries" :categories="filterData.categories" :volatility="filterData.volatility"
               :startDay="filterData.startDay" :endDay="filterData.endDay" :timezone="filterData.timezone"
               :updateFilterCountries="updateFilterCountries" @updateFilterDate="updateFilterDate"
-              @updateFilterTimezone="updateFilterTimezone"/>
-      <Table/>
+              @updateFilterTimezone="updateFilterTimezone" :updateFilterCategories="updateFilterCategories"
+              :updateFilterVolatility="updateFilterVolatility"/>
+      <Table :events="this.events"/>
     </section>
     <section class="info">
       <h1 class="content__title">
-        Экономические новости Форекс в реальном времени
+        Экономические календарь
       </h1>
       <br/>
       <p class="info__top">
-        В экономическом календаре трейдер найдёт информацию о значимых событиях
-        не только на неделю вперёд, но и на период, который выберет он сам.
-        Валютный рынок гибок и меняется изо дня в день, причём изменения могут
-        быть настолько кардинальными и неожиданными, что форекс может очень
-        быстро оставить «не у дел» трейдеров, потерявших интерес к статистике
-        или новостям. Календарь подскажет, оправдался ли прогноз, и на своей
-        странице наглядно продемонстрирует ценные статистические отчёты,
-        экономические индикаторы (список можно изменять самостоятельно), а также
-        главные события банковской сферы.
-        <br/>
-        <br/>
-        Календарь от Международный институт рынка — это ваше подспорье в
-        планировании торговой стратегии.
+        Экономический календарь - это инструмент, предоставляющий информацию о предстоящих экономических событиях и
+        публикациях, которые могут влиять на финансовые рынки. Он помогает трейдерам, инвесторам и аналитикам
+        анализировать рыночные движения, управлять рисками, повышать эффективность принятия решений.
       </p>
       <br/>
       <p class="info__hidden">
@@ -237,6 +237,9 @@ button {
 }
 
 .content__title {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
 }
 
 .table__main__list__item__description p {
@@ -248,7 +251,10 @@ button {
   padding-left: 5% !important;
   padding-right: 5% !important;
 
-  color: white;
+  color: black;
+}
+
+.main.dark {color: white;
   background-image: linear-gradient(
       rgba(12, 16, 32, 1) 16%,
       rgba(27, 39, 82, 1)
@@ -420,6 +426,94 @@ article {
   font-size: 22px;
 }
 
+.icon-switcher {
+  width: 50px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.icon-switcher > .control {
+  display: none;
+}
+
+.icon-switcher > .control + .peg {
+  display: inline-block;
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #999;
+  transition: 0.2s;
+  background-color: #fff;
+}
+
+.icon-switcher > .control ~ .bg {
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #999;
+  background-color: #fff;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.icon-switcher > .control ~ .bg::before {
+  content: '';
+  position: absolute;
+  left: calc(100% - 20px);
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #262626;
+  transition: 0.2s ease-out;
+}
+
+.icon-switcher > .control ~ .bg::after {
+  content: '';
+  position: absolute;
+  left: calc(100% - 14px);
+  top: -1px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: 0.2s ease-out;
+}
+
+.icon-switcher > .control:checked + .peg {
+  left: calc(100% - 24px);
+}
+
+.icon-switcher > .control:checked ~ .bg {
+  background-color: #262626;
+}
+
+.icon-switcher > .control:checked ~ .bg::before {
+  left: 6px;
+  width: 14px;
+  height: 14px;
+  background-color: #ffd712;
+  filter: blur(4px);
+}
+
+.icon-switcher > .control:checked ~ .bg::after {
+  background-color: #ffd712;
+  width: 12px;
+  height: 12px;
+  top: initial;
+  left: 8px;
+}
+
 @media (max-width: 560px) {
   .text-left {
     font-size: 18px;
@@ -523,6 +617,10 @@ import timezones from "@/components/client/EconomicCalendar/Filter/timezones.mjs
 import moment from "moment-timezone";
 import 'moment/locale/ru';
 import ru from "moment/dist/locale/ru"
+import categories from "@/components/client/EconomicCalendar/Filter/categories";
+import volatility from "@/components/client/EconomicCalendar/Filter/volatility";
+import {countries} from "@/components/client/EconomicCalendar/Filter/countries";
+import {ref} from "vue";
 
 moment.locale("ru", ru);
 
@@ -554,14 +652,28 @@ export default {
       contentHeight: 0,
       linkPage: location.href,
       filterData: {
-        countries: [],
-        volatility: [],
-        categories: [],
+        countries: countries.filter(item => item.top),
+        volatility: volatility,
+        categories: categories,
         startDay: "",
         endDay: "",
         timezone: this.getUserTimeZone()
-      }
+      },
+      events: {},
+      darkTheme: false,
+      main: ref('')
     };
+  },
+  watch: {
+    filterData: {
+      handler(newFilterData, oldFilterData) {
+        console.log("updateFilterData", oldFilterData, newFilterData);
+        this.getEvents();
+      },
+      deep: true,
+    },
+  },
+  setup() {
   },
   mounted() {
     document
@@ -587,6 +699,8 @@ export default {
     this.$refs.inputName.addEventListener("input", this.formValidate);
     this.$refs.inputPhone.addEventListener("input", this.formValidate);
 
+    this.switchTheme();
+
     const lastClickTime = localStorage.getItem("lastClickTime");
     if (lastClickTime) {
       const currentTime = new Date().getTime();
@@ -600,8 +714,55 @@ export default {
     }
   },
   created() {
+    this.getEvents();
   },
   methods: {
+    getDynamicDate(dayDifference) {
+      const currentDate = new Date();
+      currentDate.setDate(currentDate.getDate() + dayDifference);
+      const formattedDate = this.formatDate(currentDate);
+      return `${formattedDate}-${formattedDate}`;
+    },
+    formatDate(date) {
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${day}.${month}.${year}`;
+    },
+    getEvents() {
+      /*console.log("this.filterData", this.filterData);
+      const requestData = {
+        countries: this.filterData.countries.map(country => country.code),
+        volatility: this.filterData.volatility.filter(item => item.active).map(item => item.value),
+        categories: this.filterData.categories.filter(item => item.active).map(category => category.value),
+        startDay: this.filterData.startDay === "" ? this.getDynamicDate(0).split("-")[0] : this.filterData.startDay,
+        endDay: this.filterData.endDay === "" ? this.getDynamicDate(0).split("-")[0] : this.filterData.endDay,
+        timezone: this.filterData.timezone,
+      }
+      console.log("requestData", requestData)
+      const queryString = Object.entries(requestData)
+          .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+          .join('&');
+      fetch("http://mir-forex-backend/index.php?action=getEconomicEvents&" + queryString)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json(); // Попытка разбора ответа как JSON
+          })
+          .then(data => {
+            if (data) {
+              console.log("response", data);
+              this.events = data.data;
+            } else {
+              console.error('Empty response or invalid JSON');
+            }
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+          });
+      console.log("queryString", queryString);*/
+    },
     close() {
       const btnClose = this.$refs.closeModal;
       const modal = this.$refs.modal;
@@ -729,6 +890,14 @@ export default {
       console.log("update timezone", newTimezone)
       this.filterData.timezone = newTimezone;
     },
+    updateFilterCategories(newCategories) {
+      console.log("updateFilterCategories", newCategories)
+      this.filterData.categories = newCategories;
+    },
+    updateFilterVolatility(newVolatility) {
+      console.log("updateFilterVolatility", newVolatility)
+      this.filterData.volatility = newVolatility;
+    },
     pad(num, size) {
       let s = num + "";
       while (s.length < size) s = "0" + s;
@@ -737,13 +906,20 @@ export default {
     getUserTimeZone() {
       const now = new Date();
       const timeZoneOffsetHours = -now.getTimezoneOffset() / 60 * 100;
-      const timeZone = moment.tz.guess();
-      const timeZoneRu = moment.tz(timeZone).zoneAbbr();
+      const timeZone = moment.tz.guess().split("/")[1];
 
-      const userTimeZone = timezones.find(zone => zone.value === `+${this.pad(timeZoneOffsetHours, 4)}` && zone.title.includes(timeZone));
+      const userTimeZone = timezones.find(zone => {
+        return zone.value === `+${this.pad(timeZoneOffsetHours, 4)}` && zone.en.includes(timeZone)
+      });
       const defaultTimeZone = timezones.find(zone => zone.title.includes("Москва"));
 
       return userTimeZone ? userTimeZone.title : defaultTimeZone.title;
+    },
+    switchTheme() {
+      this.darkTheme = !this.darkTheme;
+      console.log("this.darkTheme", this.darkTheme);
+      if (this.darkTheme) this.$refs.main.classList.add("dark");
+      else this.$refs.main.classList.remove("dark");
     }
   },
 };

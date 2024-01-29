@@ -1,60 +1,68 @@
 <template>
   <div
-    class="modal fade"
-    id="country"
-    tabindex="-1"
-    aria-labelledby="country"
-    aria-hidden="true"
-    ref="modal"
+      class="modal fade"
+      id="country"
+      tabindex="-1"
+      aria-labelledby="country"
+      aria-hidden="true"
+      ref="modal"
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="header">
           <h3>Выберите страны</h3>
           <button
-            class="modal-close"
-            data-bs-toggle="modal"
-            data-bs-target="#country"
+              class="modal-close"
+              data-bs-toggle="modal"
+              data-bs-target="#country"
           >
-            <img src="/icons/xmark.svg" alt="" />
+            <img src="/icons/xmark.svg" alt=""/>
           </button>
         </div>
         <div class="search">
-          <img src="/icons/search.svg" alt="" />
-          <input v-model="searchText" type="text" />
+          <img src="/icons/search.svg" alt=""/>
+          <input v-model="searchText" type="text"/>
         </div>
         <div class="tabs-list">
           <button v-for="tab in tabs" :key="tab.code" class="tab">
-            <img class="flag" :src="`/public/country/${tab.code}.svg`" alt="" />
+            <img class="flag" :src="`/country/${tab.code}.svg`" alt=""/>
             <span class="name">{{ tab.code }}</span>
-            <img @click="removeTab(tab)" src="/icons/xmark.svg" alt="" />
+            <img @click="removeTab(tab)" src="/icons/xmark.svg" alt=""/>
+          </button>
+          <button
+              @click="clearTabs"
+              :class="{ hidden: tabs.length === 0,  }"
+              class="tab clear"
+          >
+            <img src="/icons/trash.svg" alt=""/>
+            <span>Очистить</span>
           </button>
         </div>
         <div class="quick-choice">
-          <button>
-            <img src="/icons/fire.svg" alt="" />
-            <span>Топ стран</span>
-          </button>
           <button
-            @click="selectAllCountries"
-            :class="{ active: tabs.length === countries.length }"
+              @click="selectAllCountries"
+              :class="{ active: tabs.length === countries.length }"
           >
-            <img src="/icons/globe.svg" alt="" />
+            <img src="/icons/globe.svg" alt=""/>
             <span>Весь мир</span>
+          </button>
+          <button @click="selectTopCountries">
+            <img src="/icons/fire.svg" alt=""/>
+            <span>Топ стран</span>
           </button>
         </div>
         <div class="select__list">
           <button
-            class="select__list--item"
-            v-for="country in filteredCountries"
-            :key="country.code"
-            @click="toggleCountry(country)"
-            :class="{ active: isCountrySelected(country) }"
+              class="select__list--item"
+              v-for="country in filteredCountries"
+              :key="country.code"
+              @click="toggleCountry(country)"
+              :class="{ active: isCountrySelected(country) }"
           >
             <img
-              class="flag"
-              :src="`/country/${country.code}.svg`"
-              alt=""
+                class="flag"
+                :src="`/country/${country.code}.svg`"
+                alt=""
             />
             <span class="name">{{ country.name }}</span>
           </button>
@@ -158,6 +166,13 @@ input {
   margin-top: 10px;
 }
 
+.tabs-list.wrap {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .tab {
   display: flex;
   align-items: center;
@@ -167,6 +182,18 @@ input {
 
   border-radius: 5px;
   background-color: rgba(18, 52, 189, 0.4);
+}
+
+.tab.clear {
+}
+
+.tab.clear img {
+  height: 20px;
+  width: auto;
+}
+
+.tab.hidden {
+  display: none;
 }
 
 .quick-choice {
@@ -227,11 +254,12 @@ input {
 }
 </style>
 <script setup>
-import { countries } from "@/components/client/EconomicCalendar/Filter/countries";
-import { ref, defineProps, defineEmits, computed } from "vue";
+import {countries} from "@/components/client/EconomicCalendar/Filter/countries";
+import {ref, defineProps, defineEmits, computed} from "vue";
 
-const { tabs } = defineProps(["tabs"]);
+const {tabs} = defineProps(["tabs"]);
 const emit = defineEmits();
+const topCountries = countries.filter(item => item.top);
 
 const searchText = ref("");
 
@@ -245,9 +273,11 @@ function toggleCountry(country) {
   }
   emit("updateTabs", tabs);
 }
+
 function isCountrySelected(country) {
   return tabs.some((tab) => tab.code === country.code);
 }
+
 function removeTab(tab) {
   const index = tabs.indexOf(tab);
   if (index !== -1) {
@@ -255,23 +285,35 @@ function removeTab(tab) {
     emit("updateTabs", tabs);
   }
 }
+
 function selectAllCountries() {
   if (tabs.length === countries.length) {
     tabs.splice(0, tabs.length);
   } else {
     const newCountries = countries.filter(
-      (country) => !isCountrySelected(country),
+        (country) => !isCountrySelected(country),
     );
     tabs.push(...newCountries);
   }
   emit("updateTabs", tabs);
 }
+
+function selectTopCountries() {
+  tabs.push(...topCountries);
+  emit("updateTabs", topCountries);
+}
+
+function clearTabs() {
+  tabs.splice(0, tabs.length);
+  emit("updateTabs", tabs);
+}
+
 const filteredCountries = computed(() => {
   const searchLowerCase = searchText.value.toLowerCase();
   return countries.filter(
-    (country) =>
-      country.name.toLowerCase().includes(searchLowerCase) ||
-      country.code.toLowerCase().includes(searchLowerCase),
+      (country) =>
+          country.name.toLowerCase().includes(searchLowerCase) ||
+          country.code.toLowerCase().includes(searchLowerCase),
   );
 });
 </script>

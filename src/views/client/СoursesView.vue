@@ -48,7 +48,7 @@ setTimeout(() => {
 
 <template>
   <Preloader />
-  <TopHeader />
+  <TopHeader :darkTheme="true" />
   <LicenseModal />
   <CoursesModal />
 
@@ -522,9 +522,11 @@ article {
   .card-2.top h5 {
     font-size: 20px !important;
   }
+}
 
+@media (max-width: 1400px) {
   .carded {
-    grid-template-columns: repeat();
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -561,6 +563,25 @@ article {
   .card-2 {
     margin-bottom: 30px;
     text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .carded {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .carded .card-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .carded .card {
+    width: 350px!important;
+  }
+
+  .card-2.top {
+    width: 360px;
   }
 }
 </style>

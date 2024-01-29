@@ -48,7 +48,7 @@ setTimeout(() => {
 
 <template>
   <Preloader />
-  <TopHeader />
+  <TopHeader :darkTheme="true" />
   <LicenseModal />
 
   <div class="main">

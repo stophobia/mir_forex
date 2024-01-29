@@ -1,8 +1,8 @@
 <?php
 
-    error_reporting(0);
+	    error_reporting(0);
 
-    header('Content-Type: application/json; charset=utf-8');
+	    header('Content-Type: application/json; charset=utf-8');
 
     $db_host        = 'localhost';
     $db_user        = 'mirforex';
@@ -272,7 +272,7 @@
         }
     }
 
-    if ($_GET['action'] == 'getEconomicEvents')
+    if ($_GET['action'] == 'getEconomicEvents') {
             if (empty($_GET['startDay']) || !validateDate($_GET['startDay'])) $errors[] = 'Некорректный формат даты начала.';
             if (empty($_GET['endDay']) || !validateDate($_GET['endDay'])) $errors[] = 'Некорректный формат даты окончания.';
             if (empty($_GET['country']) || !is_array($_GET['country'])) $errors[] = 'Параметр "country" должен быть массивом.';

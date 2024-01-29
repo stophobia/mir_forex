@@ -1,6 +1,7 @@
 <template>
   <Country :tabs="countries" @updateTabs="updateFilterCountries"/>
-  <Settings :tabs="countries" @updateTabs="updateFilterCountries"/>
+  <Settings @updateCategories="updateFilterCategories" @updateVolatility="updateFilterVolatility"
+            :volatilitySelected="volatility" :categoriesSelected="categories"/>
   <div class="filter">
     <div class="filter__left">
       <div class="not-flag">
@@ -13,7 +14,7 @@
       >
         <ul class="filter-select-flags">
           <li v-for="tab in lastThreeTabs()" :key="tab.code">
-            <img class="flag" :src="`/public/country/${tab.code}.svg`" alt=""/>
+            <img class="flag" :src="`/country/${tab.code}.svg`" alt=""/>
           </li>
           <li v-if="countries.length > 0">
             <span class="count">+{{ countries.length }}</span>
@@ -23,8 +24,12 @@
           </li>
         </ul>
       </div>
+      <button class="filter__middle--day">
+        <img src="/icons/fire.svg" alt="">
+        <span>Только важное</span>
+      </button>
       <button
-          class="settings"
+          class="filter__middle--day"
           data-bs-toggle="modal"
           data-bs-target="#settings"
       >
@@ -111,23 +116,19 @@ ul {
 }
 
 .utc__body::-webkit-scrollbar-thumb {
-  background: rgba(3, 14, 58, 0.66);
-}
-
-.utc__body::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-.utc__body .utc {
-  border-radius: 0 !important;
 }
 
 button {
   outline: 0;
   background: none;
   border: none;
-  color: white;
+  color: black!important;
   cursor: pointer;
+}
+
+.main.dark button {
+  color: white!important;
 }
 
 .dp__main {
@@ -147,14 +148,22 @@ button {
   transition: all 0.3s ease;
 }
 
+.dp-custom-input::placeholder {
+  opacity: 1;
+}
+
 .dp-custom-input:hover {
   background-color: rgba(41, 61, 138, 0.4);
 }
 
 .dp-custom-input::placeholder {
   font-weight: 500;
-  color: #ffffffac;
+  color: black;
   font-family: inherit;
+}
+
+.main.dark .dp-custom-input::placeholder {
+  color: #ffffffac;
 }
 
 .dp__input_icon {
@@ -189,11 +198,29 @@ button {
   color: white;
 }
 
+.dp__action_buttons {
+  gap: 7px;
+}
+
 .dp__action_select,
 .dp__range_between {
   background-color: rgba(41, 61, 138, 0.4);
-  color: white;
+  color: white !important;
   border: none;
+  padding: 7px 15px !important;
+  font-size: 14px;
+  height: auto;
+}
+
+.dp__action_cancel {
+  padding: 7px 15px !important;
+  font-size: 14px;
+  height: auto;
+  color: white !important;
+}
+
+.dp__arrow_top {
+  display: none;
 }
 
 .dp__calendar_next {
@@ -326,9 +353,13 @@ button {
   column-gap: 10px;
   padding: 6px 12px;
 
-  border-radius: 10px;
+  border-radius: 0;
 
   transition: all 0.3s ease;
+}
+
+.header .utc {
+  border-radius: 10px;
 }
 </style>
 <script setup>
@@ -355,8 +386,12 @@ const {
   updateFilterCountries,
   startDay,
   endDay,
-  timezone
-} = defineProps(["countries", "updateFilterCountries", "startDay", "endDay", "timezone"]);
+  timezone,
+  updateFilterCategories,
+  updateFilterVolatility,
+  categories,
+  volatility
+} = defineProps(["countries", "updateFilterCountries", "startDay", "endDay", "timezone", "updateFilterCategories", "updateFilterVolatility", "categories", "volatility"]);
 
 const clearDatapicker = () => {
   if (datepicker) {
@@ -400,7 +435,7 @@ const selectDate = (e) => {
 function getDynamicDate(dayDifference) {
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() + dayDifference);
-  const formattedDate = this.formatDate(currentDate);
+  const formattedDate = formatDate(currentDate);
   return `${formattedDate}-${formattedDate}`;
 }
 
@@ -410,7 +445,7 @@ function getDynamicWeekRange() {
   startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 1);
   const endOfWeek = new Date(currentDate);
   endOfWeek.setDate(currentDate.getDate() + (7 - currentDate.getDay()));
-  return `${this.formatDate(startOfWeek)}-${this.formatDate(endOfWeek)}`;
+  return `${formatDate(startOfWeek)}-${formatDate(endOfWeek)}`;
 }
 
 function formatDate(date) {
@@ -449,7 +484,7 @@ const format = (date) => {
     endDate.year = date[0]?.getFullYear();
   }
 
-  return `${startDate.day}.${startDate.month}.${startDate.year} - ${endDate.day}.${endDate.month}.${endDate.year}`;
+  return `${String(startDate.day).padStart(2, '0')}.${String(startDate.month).padStart(2, '0')}.${startDate.year} - ${String(endDate.day).padStart(2, '0')}.${String(endDate.month).padStart(2, '0')}.${endDate.year}`;
 };
 
 const lastThreeTabs = () => {

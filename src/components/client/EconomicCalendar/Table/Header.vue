@@ -48,7 +48,11 @@
 
 p {
   background: none!important;
-  color: white!important;
+  color: black!important;
   padding: 0!important;
+}
+
+.main.dark p {
+  color: white!important;
 }
 </style>

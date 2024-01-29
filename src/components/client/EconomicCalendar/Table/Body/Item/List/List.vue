@@ -1,7 +1,6 @@
 <template>
   <div class="table__item__list">
-    <Item/>
-    <Item/>
+    <Item v-for="event in eventList" :event="event"/>
   </div>
 </template>
 
@@ -17,4 +16,8 @@
 </style>
 <script setup>
 import Item from "@/components/client/EconomicCalendar/Table/Body/Item/List/Item.vue";
+import {defineProps} from "vue";
+
+const {eventList} = defineProps(["eventList"])
+console.log("eventList", eventList)
 </script>
